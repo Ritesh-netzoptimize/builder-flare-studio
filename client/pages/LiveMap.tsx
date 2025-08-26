@@ -20,7 +20,8 @@ import {
   Square,
   Zap,
   Target,
-  Eye
+  Eye,
+  BarChart3
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { Vehicle, Geofence, TripData, VehicleLocation } from "@shared/fleet-types";
