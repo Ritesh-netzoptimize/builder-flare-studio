@@ -2,12 +2,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import { 
-  Truck, 
-  MapPin, 
-  Users, 
-  AlertTriangle, 
-  TrendingUp, 
+import { Button } from "@/components/ui/button";
+import {
+  Truck,
+  MapPin,
+  Users,
+  AlertTriangle,
+  TrendingUp,
   TrendingDown,
   Activity,
   Fuel,
@@ -18,8 +19,12 @@ import {
   Pause,
   Wrench,
   Star,
-  AlertCircle
+  AlertCircle,
+  Map,
+  Navigation
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import type { Vehicle, FleetStats, FleetKPIs, Alert } from "@shared/fleet-types";
 
 export default function Index() {
   // Mock data - in a real app this would come from an API
