@@ -1,7 +1,6 @@
 import "./global.css";
 
 import { Toaster } from "@/components/ui/toaster";
-import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -33,14 +32,4 @@ const App = () => (
   </QueryClientProvider>
 );
 
-// Prevent multiple root creation during HMR
-const container = document.getElementById("root")!;
-
-// Store root in module scope to prevent recreation on HMR
-let root: ReturnType<typeof createRoot> | null = null;
-
-if (!root) {
-  root = createRoot(container);
-}
-
-root.render(<App />);
+export default App;
