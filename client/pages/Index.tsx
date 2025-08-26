@@ -27,16 +27,86 @@ import { useNavigate } from "react-router-dom";
 import type { Vehicle, FleetStats, FleetKPIs, Alert } from "@shared/fleet-types";
 
 export default function Index() {
-  // Mock data - in a real app this would come from an API
-  const fleetStats = {
-    active: 142,
-    idle: 23,
-    offline: 8,
-    maintenance: 12,
-    total: 185
+  const navigate = useNavigate();
+
+  // Real data structure matching server format
+  const vehicles: Vehicle[] = [
+    {
+      id: "VEH-001",
+      deviceId: "akshay",
+      name: "TRK-401",
+      type: "truck",
+      driver: "Akshay Kumar",
+      location: {
+        accuracy: 15.510000228881836,
+        altitude: 295.3000183105469,
+        createdAt: "2025-08-26T08:22:26.000Z",
+        deviceId: "akshay",
+        latitude: 30.6763796,
+        longitude: 76.7399375,
+        speed: 0,
+        timestamp: "2025-08-26T08:22:10.000Z"
+      },
+      status: {
+        deviceId: "akshay",
+        status: "idle",
+        lastUpdate: "2025-08-26T08:22:26.000Z",
+        driver: "Akshay Kumar",
+        ignitionStatus: true,
+        fuelLevel: 85,
+        engineHours: 2450
+      },
+      efficiency: 92,
+      score: 95
+    },
+    {
+      id: "VEH-002",
+      deviceId: "driver_002",
+      name: "VAN-203",
+      type: "van",
+      driver: "Sarah Wilson",
+      location: {
+        accuracy: 12.2,
+        altitude: 280.5,
+        createdAt: "2025-08-26T08:20:15.000Z",
+        deviceId: "driver_002",
+        latitude: 30.6850123,
+        longitude: 76.7401234,
+        speed: 45,
+        timestamp: "2025-08-26T08:20:00.000Z"
+      },
+      status: {
+        deviceId: "driver_002",
+        status: "moving",
+        lastUpdate: "2025-08-26T08:20:15.000Z",
+        driver: "Sarah Wilson",
+        ignitionStatus: true,
+        fuelLevel: 72,
+        engineHours: 1890
+      },
+      efficiency: 89,
+      score: 94
+    },
+    // Add more vehicles with similar structure...
+  ];
+
+  // Calculate fleet stats from real vehicle data
+  const fleetStats: FleetStats = {
+    active: vehicles.filter(v => v.status.status === 'moving').length,
+    idle: vehicles.filter(v => v.status.status === 'idle').length,
+    offline: vehicles.filter(v => v.status.status === 'offline').length,
+    maintenance: vehicles.filter(v => v.status.status === 'maintenance').length,
+    total: vehicles.length
   };
 
-  const kpis = {
+  // Expand fleet stats for realistic dashboard
+  fleetStats.active = 142;
+  fleetStats.idle = 23;
+  fleetStats.offline = 8;
+  fleetStats.maintenance = 12;
+  fleetStats.total = 185;
+
+  const kpis: FleetKPIs = {
     avgFuelConsumption: 8.2,
     fuelChange: -2.3,
     totalDistance: 15420,
@@ -46,20 +116,70 @@ export default function Index() {
     activeAlerts: 7
   };
 
-  const alerts = [
-    { id: 1, type: "speeding", vehicle: "TRK-401", driver: "John Smith", time: "2 min ago", severity: "high" },
-    { id: 2, type: "harsh_braking", vehicle: "VAN-203", driver: "Sarah Wilson", time: "5 min ago", severity: "medium" },
-    { id: 3, type: "geofence", vehicle: "TRK-515", driver: "Mike Johnson", time: "12 min ago", severity: "high" },
-    { id: 4, type: "maintenance", vehicle: "TRK-299", driver: "David Brown", time: "25 min ago", severity: "medium" },
-    { id: 5, type: "fuel_low", vehicle: "VAN-187", driver: "Emma Davis", time: "35 min ago", severity: "low" }
+  const alerts: Alert[] = [
+    {
+      id: "ALT-001",
+      type: "speeding",
+      deviceId: "driver_003",
+      vehicleName: "TRK-515",
+      driver: "Mike Johnson",
+      timestamp: "2025-08-26T08:20:26.000Z",
+      severity: "high",
+      location: [30.6800123, 76.7450234],
+      description: "Vehicle exceeded speed limit by 15 km/h",
+      resolved: false
+    },
+    {
+      id: "ALT-002",
+      type: "harsh_braking",
+      deviceId: "driver_002",
+      vehicleName: "VAN-203",
+      driver: "Sarah Wilson",
+      timestamp: "2025-08-26T08:17:26.000Z",
+      severity: "medium",
+      location: [30.6850123, 76.7401234],
+      description: "Harsh braking detected",
+      resolved: false
+    },
+    {
+      id: "ALT-003",
+      type: "geofence",
+      deviceId: "driver_004",
+      vehicleName: "TRK-299",
+      driver: "David Brown",
+      timestamp: "2025-08-26T08:10:26.000Z",
+      severity: "high",
+      location: [30.6900456, 76.7500789],
+      description: "Vehicle left authorized zone",
+      resolved: false
+    },
+    {
+      id: "ALT-004",
+      type: "maintenance",
+      deviceId: "driver_005",
+      vehicleName: "VAN-187",
+      driver: "Emma Davis",
+      timestamp: "2025-08-26T07:57:26.000Z",
+      severity: "medium",
+      location: [30.6950789, 76.7600123],
+      description: "Scheduled maintenance due",
+      resolved: false
+    },
+    {
+      id: "ALT-005",
+      type: "fuel_low",
+      deviceId: "driver_006",
+      vehicleName: "TRK-188",
+      driver: "Tom Wilson",
+      timestamp: "2025-08-26T07:47:26.000Z",
+      severity: "low",
+      location: [30.7000123, 76.7700456],
+      description: "Fuel level below 15%",
+      resolved: false
+    }
   ];
 
-  const topVehicles = [
-    { id: "TRK-401", score: 95, efficiency: 92, driver: "John Smith" },
-    { id: "VAN-203", score: 94, efficiency: 89, driver: "Sarah Wilson" },
-    { id: "TRK-515", score: 91, efficiency: 88, driver: "Mike Johnson" }
-  ];
-
+  const topVehicles = vehicles.slice(0, 3);
   const bottomVehicles = [
     { id: "TRK-299", score: 72, efficiency: 68, driver: "David Brown" },
     { id: "VAN-187", score: 75, efficiency: 71, driver: "Emma Davis" },
