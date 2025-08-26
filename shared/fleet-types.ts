@@ -127,6 +127,37 @@ export interface FleetKPIs {
   activeAlerts: number;
 }
 
+export interface Driver {
+  id: string;
+  name: string;
+  email: string;
+  phone: string;
+  licenseNumber: string;
+  licenseExpiry: string;
+  employeeId: string;
+  status: 'active' | 'inactive' | 'on_leave' | 'suspended';
+  assignedVehicles: string[];
+  currentVehicle?: string;
+  rating: number;
+  totalDistance: number;
+  safetyScore: number;
+  joiningDate: string;
+  avatar?: string;
+}
+
+export interface Message {
+  id: string;
+  from: string;
+  to: string;
+  vehicleId?: string;
+  subject: string;
+  content: string;
+  timestamp: string;
+  read: boolean;
+  priority: 'low' | 'normal' | 'high' | 'urgent';
+  type: 'text' | 'alert' | 'instruction';
+}
+
 export interface Alert {
   id: string;
   type: 'speeding' | 'harsh_braking' | 'geofence' | 'maintenance' | 'fuel_low' | 'engine_fault';
@@ -138,4 +169,14 @@ export interface Alert {
   location?: [number, number];
   description: string;
   resolved: boolean;
+}
+
+export interface VehicleFilter {
+  status?: string[];
+  type?: string[];
+  driver?: string[];
+  maintenance?: string[];
+  location?: string;
+  fuelLevel?: [number, number];
+  efficiency?: [number, number];
 }
