@@ -180,3 +180,140 @@ export interface VehicleFilter {
   fuelLevel?: [number, number];
   efficiency?: [number, number];
 }
+
+export interface ReportFilter {
+  dateRange: {
+    start: string;
+    end: string;
+  };
+  vehicles?: string[];
+  drivers?: string[];
+  vehicleTypes?: string[];
+  regions?: string[];
+}
+
+export interface FuelUsageData {
+  vehicleId: string;
+  vehicleName: string;
+  date: string;
+  fuelConsumed: number;
+  distance: number;
+  efficiency: number;
+  cost: number;
+}
+
+export interface MileageData {
+  vehicleId: string;
+  vehicleName: string;
+  date: string;
+  totalDistance: number;
+  businessDistance: number;
+  personalDistance: number;
+  averageSpeed: number;
+}
+
+export interface IdleTimeData {
+  vehicleId: string;
+  vehicleName: string;
+  driver: string;
+  date: string;
+  totalIdleTime: number; // in minutes
+  idleEvents: number;
+  fuelWasted: number;
+  location: string;
+}
+
+export interface ViolationData {
+  vehicleId: string;
+  vehicleName: string;
+  driver: string;
+  date: string;
+  type: 'speeding' | 'harsh_braking' | 'rapid_acceleration' | 'geofence_violation';
+  severity: 'low' | 'medium' | 'high';
+  location: [number, number];
+  details: string;
+  resolved: boolean;
+}
+
+export interface MaintenanceCostData {
+  vehicleId: string;
+  vehicleName: string;
+  date: string;
+  type: 'scheduled' | 'repair' | 'inspection' | 'emergency';
+  cost: number;
+  description: string;
+  servicedBy: string;
+  mileage: number;
+}
+
+export interface DriverPerformanceData {
+  driverId: string;
+  driverName: string;
+  date: string;
+  totalDistance: number;
+  fuelEfficiency: number;
+  safetyScore: number;
+  violations: number;
+  idleTime: number;
+  rating: number;
+}
+
+export interface Report {
+  id: string;
+  name: string;
+  type: 'fuel_usage' | 'mileage' | 'idle_time' | 'violations' | 'maintenance_costs' | 'driver_performance' | 'custom';
+  description: string;
+  filters: ReportFilter;
+  data: any[];
+  chartConfig?: ChartConfig;
+  createdAt: string;
+  createdBy: string;
+  lastGenerated: string;
+  isScheduled: boolean;
+  scheduleFrequency?: 'daily' | 'weekly' | 'monthly';
+}
+
+export interface ChartConfig {
+  type: 'bar' | 'line' | 'pie' | 'doughnut' | 'area' | 'scatter';
+  title: string;
+  xAxis: {
+    label: string;
+    field: string;
+  };
+  yAxis: {
+    label: string;
+    field: string;
+  };
+  groupBy?: string;
+  colors?: string[];
+}
+
+export interface ReportTemplate {
+  id: string;
+  name: string;
+  description: string;
+  type: 'fuel_usage' | 'mileage' | 'idle_time' | 'violations' | 'maintenance_costs' | 'driver_performance';
+  category: 'operational' | 'financial' | 'safety' | 'maintenance';
+  defaultFilters: Partial<ReportFilter>;
+  chartConfigs: ChartConfig[];
+  icon: string;
+  color: string;
+}
+
+export interface DashboardMetrics {
+  totalFuelCost: number;
+  totalDistance: number;
+  totalIdleTime: number;
+  totalViolations: number;
+  averageEfficiency: number;
+  maintenanceCosts: number;
+  topPerformingDriver: string;
+  worstPerformingVehicle: string;
+}
+
+export interface ExportOptions {
+  format: 'pdf' | 'csv' | 'excel' | 'json';
+  includeCharts: boolean;
+  includeRawData: boolean;
+  fileName?: string;
+}
