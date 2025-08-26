@@ -21,7 +21,8 @@ import {
   Star,
   AlertCircle,
   Map,
-  Navigation
+  Navigation,
+  BarChart3
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { Vehicle, FleetStats, FleetKPIs, Alert } from "@shared/fleet-types";
