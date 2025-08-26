@@ -35,13 +35,12 @@ const App = () => (
 
 // Prevent multiple root creation during HMR
 const container = document.getElementById("root")!;
-let root: ReturnType<typeof createRoot>;
 
-if (!container._reactRoot) {
+// Store root in module scope to prevent recreation on HMR
+let root: ReturnType<typeof createRoot> | null = null;
+
+if (!root) {
   root = createRoot(container);
-  container._reactRoot = root;
-} else {
-  root = container._reactRoot;
 }
 
 root.render(<App />);
