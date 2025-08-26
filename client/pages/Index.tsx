@@ -254,6 +254,14 @@ export default function Index() {
                   <Map className="h-4 w-4" />
                   Live Map
                 </Button>
+                <Button
+                  onClick={() => navigate('/reports')}
+                  className="gap-2"
+                  variant="outline"
+                >
+                  <BarChart3 className="h-4 w-4" />
+                  Reports
+                </Button>
               </div>
               <Badge variant="outline" className="gap-1">
                 <Activity className="h-3 w-3" />
