@@ -423,14 +423,22 @@ export default function Index() {
                           {alert.type.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase())}
                         </p>
                         <p className="text-xs text-muted-foreground">
-                          {alert.vehicle} • {alert.driver}
+                          {alert.vehicleName} • {alert.driver}
+                        </p>
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {alert.description}
                         </p>
                       </div>
                     </div>
                     <div className="text-right">
                       <Badge variant="outline" className="text-xs">
-                        {alert.time}
+                        {formatTimeAgo(alert.timestamp)}
                       </Badge>
+                      {alert.location && (
+                        <p className="text-xs text-muted-foreground mt-1">
+                          {alert.location[0].toFixed(4)}, {alert.location[1].toFixed(4)}
+                        </p>
+                      )}
                     </div>
                   </div>
                 ))}
