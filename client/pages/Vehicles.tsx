@@ -5,19 +5,31 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { 
+import {
   ArrowLeft,
   Search,
   Filter,
   SortAsc,
   SortDesc,
-  Truck, 
-  MapPin, 
+  Truck,
+  MapPin,
   User,
   MessageSquare,
   Settings,
@@ -35,10 +47,16 @@ import {
   Car,
   Bus,
   Bike,
-  BarChart3
+  BarChart3,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import type { Vehicle, Driver, Message, VehicleFilter, MaintenanceRecord } from "@shared/fleet-types";
+import type {
+  Vehicle,
+  Driver,
+  Message,
+  VehicleFilter,
+  MaintenanceRecord,
+} from "@shared/fleet-types";
 
 export default function Vehicles() {
   const navigate = useNavigate();
@@ -69,8 +87,8 @@ export default function Vehicles() {
         fuelType: "diesel",
         capacity: {
           cargo: 45,
-          weight: 25
-        }
+          weight: 25,
+        },
       },
       driver: "Akshay Kumar",
       assignedDriverId: "DRV-001",
@@ -82,7 +100,7 @@ export default function Vehicles() {
         latitude: 30.6763796,
         longitude: 76.7399375,
         speed: 0,
-        timestamp: "2025-08-26T08:22:10.000Z"
+        timestamp: "2025-08-26T08:22:10.000Z",
       },
       status: {
         deviceId: "akshay",
@@ -91,7 +109,7 @@ export default function Vehicles() {
         driver: "Akshay Kumar",
         ignitionStatus: true,
         fuelLevel: 85,
-        engineHours: 2450
+        engineHours: 2450,
       },
       efficiency: 92,
       score: 95,
@@ -106,8 +124,8 @@ export default function Vehicles() {
           cost: 1500,
           mileage: 124500,
           status: "completed",
-          servicedBy: "AutoCare Services"
-        }
+          servicedBy: "AutoCare Services",
+        },
       ],
       lastMaintenance: "2025-08-20T00:00:00.000Z",
       nextMaintenance: "2025-11-20T00:00:00.000Z",
@@ -115,7 +133,7 @@ export default function Vehicles() {
       registrationExpiry: "2026-01-30T00:00:00.000Z",
       fuelCapacity: 400,
       purchaseDate: "2022-01-15T00:00:00.000Z",
-      warrantyExpiry: "2025-01-15T00:00:00.000Z"
+      warrantyExpiry: "2025-01-15T00:00:00.000Z",
     },
     {
       id: "VEH-002",
@@ -132,8 +150,8 @@ export default function Vehicles() {
         fuelType: "diesel",
         capacity: {
           passengers: 12,
-          cargo: 15
-        }
+          cargo: 15,
+        },
       },
       driver: "Sarah Wilson",
       assignedDriverId: "DRV-002",
@@ -145,7 +163,7 @@ export default function Vehicles() {
         latitude: 30.6850123,
         longitude: 76.7401234,
         speed: 45,
-        timestamp: "2025-08-26T08:20:00.000Z"
+        timestamp: "2025-08-26T08:20:00.000Z",
       },
       status: {
         deviceId: "driver_002",
@@ -154,7 +172,7 @@ export default function Vehicles() {
         driver: "Sarah Wilson",
         ignitionStatus: true,
         fuelLevel: 72,
-        engineHours: 1890
+        engineHours: 1890,
       },
       efficiency: 89,
       score: 94,
@@ -169,8 +187,8 @@ export default function Vehicles() {
           cost: 500,
           mileage: 89000,
           status: "completed",
-          servicedBy: "Official Service Center"
-        }
+          servicedBy: "Official Service Center",
+        },
       ],
       lastMaintenance: "2025-08-15T00:00:00.000Z",
       nextMaintenance: "2025-10-15T00:00:00.000Z",
@@ -178,7 +196,7 @@ export default function Vehicles() {
       registrationExpiry: "2026-02-28T00:00:00.000Z",
       fuelCapacity: 70,
       purchaseDate: "2023-03-10T00:00:00.000Z",
-      warrantyExpiry: "2026-03-10T00:00:00.000Z"
+      warrantyExpiry: "2026-03-10T00:00:00.000Z",
     },
     {
       id: "VEH-003",
@@ -195,8 +213,8 @@ export default function Vehicles() {
         fuelType: "diesel",
         capacity: {
           cargo: 38,
-          weight: 20
-        }
+          weight: 20,
+        },
       },
       driver: "Mike Johnson",
       assignedDriverId: "DRV-003",
@@ -208,7 +226,7 @@ export default function Vehicles() {
         latitude: 30.6920456,
         longitude: 76.7500789,
         speed: 65,
-        timestamp: "2025-08-26T08:19:30.000Z"
+        timestamp: "2025-08-26T08:19:30.000Z",
       },
       status: {
         deviceId: "driver_003",
@@ -217,7 +235,7 @@ export default function Vehicles() {
         driver: "Mike Johnson",
         ignitionStatus: true,
         fuelLevel: 45,
-        engineHours: 3200
+        engineHours: 3200,
       },
       efficiency: 78,
       score: 88,
@@ -232,8 +250,8 @@ export default function Vehicles() {
           cost: 2800,
           mileage: 156200,
           status: "completed",
-          servicedBy: "QuickFix Garage"
-        }
+          servicedBy: "QuickFix Garage",
+        },
       ],
       lastMaintenance: "2025-08-10T00:00:00.000Z",
       nextMaintenance: "2025-09-15T00:00:00.000Z",
@@ -241,7 +259,7 @@ export default function Vehicles() {
       registrationExpiry: "2025-11-15T00:00:00.000Z",
       fuelCapacity: 300,
       purchaseDate: "2021-05-20T00:00:00.000Z",
-      warrantyExpiry: "2024-05-20T00:00:00.000Z"
+      warrantyExpiry: "2024-05-20T00:00:00.000Z",
     },
     {
       id: "VEH-004",
@@ -258,8 +276,8 @@ export default function Vehicles() {
         fuelType: "diesel",
         capacity: {
           passengers: 8,
-          cargo: 12
-        }
+          cargo: 12,
+        },
       },
       driver: "Emma Davis",
       assignedDriverId: "DRV-004",
@@ -271,7 +289,7 @@ export default function Vehicles() {
         latitude: 30.6600123,
         longitude: 76.7300456,
         speed: 0,
-        timestamp: "2025-08-26T08:15:15.000Z"
+        timestamp: "2025-08-26T08:15:15.000Z",
       },
       status: {
         deviceId: "driver_004",
@@ -280,7 +298,7 @@ export default function Vehicles() {
         driver: "Emma Davis",
         ignitionStatus: false,
         fuelLevel: 90,
-        engineHours: 1560
+        engineHours: 1560,
       },
       efficiency: 91,
       score: 93,
@@ -295,8 +313,8 @@ export default function Vehicles() {
           cost: 800,
           mileage: 78000,
           status: "completed",
-          servicedBy: "City Service Station"
-        }
+          servicedBy: "City Service Station",
+        },
       ],
       lastMaintenance: "2025-08-25T00:00:00.000Z",
       nextMaintenance: "2025-11-25T00:00:00.000Z",
@@ -304,7 +322,7 @@ export default function Vehicles() {
       registrationExpiry: "2026-01-08T00:00:00.000Z",
       fuelCapacity: 80,
       purchaseDate: "2022-02-28T00:00:00.000Z",
-      warrantyExpiry: "2025-02-28T00:00:00.000Z"
+      warrantyExpiry: "2025-02-28T00:00:00.000Z",
     },
     {
       id: "VEH-005",
@@ -320,8 +338,8 @@ export default function Vehicles() {
         color: "Black",
         fuelType: "gasoline",
         capacity: {
-          passengers: 5
-        }
+          passengers: 5,
+        },
       },
       driver: "David Brown",
       assignedDriverId: "DRV-005",
@@ -333,7 +351,7 @@ export default function Vehicles() {
         latitude: 30.6580789,
         longitude: 76.7250123,
         speed: 25,
-        timestamp: "2025-08-26T08:17:45.000Z"
+        timestamp: "2025-08-26T08:17:45.000Z",
       },
       status: {
         deviceId: "driver_005",
@@ -342,7 +360,7 @@ export default function Vehicles() {
         driver: "David Brown",
         ignitionStatus: true,
         fuelLevel: 60,
-        engineHours: 890
+        engineHours: 890,
       },
       efficiency: 88,
       score: 85,
@@ -357,8 +375,8 @@ export default function Vehicles() {
           cost: 350,
           mileage: 45000,
           status: "completed",
-          servicedBy: "Express Lube"
-        }
+          servicedBy: "Express Lube",
+        },
       ],
       lastMaintenance: "2025-08-22T00:00:00.000Z",
       nextMaintenance: "2025-11-22T00:00:00.000Z",
@@ -366,8 +384,8 @@ export default function Vehicles() {
       registrationExpiry: "2026-03-15T00:00:00.000Z",
       fuelCapacity: 60,
       purchaseDate: "2023-04-15T00:00:00.000Z",
-      warrantyExpiry: "2026-04-15T00:00:00.000Z"
-    }
+      warrantyExpiry: "2026-04-15T00:00:00.000Z",
+    },
   ];
 
   const availableDrivers: Driver[] = [
@@ -384,7 +402,7 @@ export default function Vehicles() {
       rating: 4.8,
       totalDistance: 85000,
       safetyScore: 92,
-      joiningDate: "2022-03-10T00:00:00.000Z"
+      joiningDate: "2022-03-10T00:00:00.000Z",
     },
     {
       id: "DRV-007",
@@ -399,31 +417,38 @@ export default function Vehicles() {
       rating: 4.6,
       totalDistance: 72000,
       safetyScore: 89,
-      joiningDate: "2022-08-05T00:00:00.000Z"
-    }
+      joiningDate: "2022-08-05T00:00:00.000Z",
+    },
   ];
 
   // Filter and sort logic
   const filteredAndSortedVehicles = useMemo(() => {
-    let filtered = vehicles.filter(vehicle => {
-      const matchesSearch = !searchTerm || 
+    let filtered = vehicles.filter((vehicle) => {
+      const matchesSearch =
+        !searchTerm ||
         vehicle.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         vehicle.specs.make.toLowerCase().includes(searchTerm.toLowerCase()) ||
         vehicle.specs.model.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        vehicle.specs.licensePlate.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        vehicle.specs.licensePlate
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) ||
         vehicle.driver.toLowerCase().includes(searchTerm.toLowerCase());
 
-      const matchesStatus = !filters.status?.length || filters.status.includes(vehicle.status.status);
-      const matchesType = !filters.type?.length || filters.type.includes(vehicle.type);
-      const matchesDriver = !filters.driver?.length || filters.driver.includes(vehicle.driver);
-      
+      const matchesStatus =
+        !filters.status?.length ||
+        filters.status.includes(vehicle.status.status);
+      const matchesType =
+        !filters.type?.length || filters.type.includes(vehicle.type);
+      const matchesDriver =
+        !filters.driver?.length || filters.driver.includes(vehicle.driver);
+
       return matchesSearch && matchesStatus && matchesType && matchesDriver;
     });
 
     // Sort vehicles
     filtered.sort((a, b) => {
       let aValue: any, bValue: any;
-      
+
       switch (sortField) {
         case "name":
           aValue = a.name;
@@ -454,7 +479,7 @@ export default function Vehicles() {
           bValue = b.name;
       }
 
-      if (typeof aValue === 'string') {
+      if (typeof aValue === "string") {
         aValue = aValue.toLowerCase();
         bValue = bValue.toLowerCase();
       }
@@ -471,34 +496,52 @@ export default function Vehicles() {
 
   const getVehicleIcon = (type: string) => {
     switch (type) {
-      case "truck": return <Truck className="h-5 w-5" />;
-      case "van": return <Car className="h-5 w-5" />;
-      case "car": return <Car className="h-5 w-5" />;
-      case "bus": return <Bus className="h-5 w-5" />;
-      case "motorcycle": return <Bike className="h-5 w-5" />;
-      default: return <Truck className="h-5 w-5" />;
+      case "truck":
+        return <Truck className="h-5 w-5" />;
+      case "van":
+        return <Car className="h-5 w-5" />;
+      case "car":
+        return <Car className="h-5 w-5" />;
+      case "bus":
+        return <Bus className="h-5 w-5" />;
+      case "motorcycle":
+        return <Bike className="h-5 w-5" />;
+      default:
+        return <Truck className="h-5 w-5" />;
     }
   };
 
   const getStatusColor = (status: string) => {
     switch (status) {
-      case "moving": return "text-green-600 bg-green-50 border-green-200";
-      case "idle": return "text-yellow-600 bg-yellow-50 border-yellow-200";
-      case "parked": return "text-blue-600 bg-blue-50 border-blue-200";
-      case "offline": return "text-red-600 bg-red-50 border-red-200";
-      case "maintenance": return "text-purple-600 bg-purple-50 border-purple-200";
-      default: return "text-gray-600 bg-gray-50 border-gray-200";
+      case "moving":
+        return "text-green-600 bg-green-50 border-green-200";
+      case "idle":
+        return "text-yellow-600 bg-yellow-50 border-yellow-200";
+      case "parked":
+        return "text-blue-600 bg-blue-50 border-blue-200";
+      case "offline":
+        return "text-red-600 bg-red-50 border-red-200";
+      case "maintenance":
+        return "text-purple-600 bg-purple-50 border-purple-200";
+      default:
+        return "text-gray-600 bg-gray-50 border-gray-200";
     }
   };
 
   const getStatusIcon = (status: string) => {
     switch (status) {
-      case "moving": return <CheckCircle2 className="h-4 w-4" />;
-      case "idle": return <Clock className="h-4 w-4" />;
-      case "parked": return <XCircle className="h-4 w-4" />;
-      case "offline": return <AlertTriangle className="h-4 w-4" />;
-      case "maintenance": return <Wrench className="h-4 w-4" />;
-      default: return <AlertTriangle className="h-4 w-4" />;
+      case "moving":
+        return <CheckCircle2 className="h-4 w-4" />;
+      case "idle":
+        return <Clock className="h-4 w-4" />;
+      case "parked":
+        return <XCircle className="h-4 w-4" />;
+      case "offline":
+        return <AlertTriangle className="h-4 w-4" />;
+      case "maintenance":
+        return <Wrench className="h-4 w-4" />;
+      default:
+        return <AlertTriangle className="h-4 w-4" />;
     }
   };
 
@@ -510,7 +553,9 @@ export default function Vehicles() {
     if (!vehicle.nextMaintenance) return false;
     const nextDate = new Date(vehicle.nextMaintenance);
     const today = new Date();
-    const daysUntil = Math.ceil((nextDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    const daysUntil = Math.ceil(
+      (nextDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24),
+    );
     return daysUntil <= 30;
   };
 
@@ -530,10 +575,10 @@ export default function Vehicles() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={() => navigate('/')}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
                 className="gap-2"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -545,15 +590,19 @@ export default function Vehicles() {
                   <Truck className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-foreground">Vehicles & Assets</h1>
-                  <p className="text-sm text-muted-foreground">Fleet Management System</p>
+                  <h1 className="text-xl font-bold text-foreground">
+                    Vehicles & Assets
+                  </h1>
+                  <p className="text-sm text-muted-foreground">
+                    Fleet Management System
+                  </p>
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex gap-2">
                 <Button
-                  onClick={() => navigate('/live-map')}
+                  onClick={() => navigate("/live-map")}
                   variant="outline"
                   size="sm"
                   className="gap-2"
@@ -562,7 +611,7 @@ export default function Vehicles() {
                   Live Map
                 </Button>
                 <Button
-                  onClick={() => navigate('/reports')}
+                  onClick={() => navigate("/reports")}
                   variant="outline"
                   size="sm"
                   className="gap-2"
@@ -598,7 +647,7 @@ export default function Vehicles() {
               />
             </div>
           </div>
-          
+
           <div className="flex gap-2">
             <Button
               variant={showFilters ? "default" : "outline"}
@@ -608,12 +657,15 @@ export default function Vehicles() {
               <Filter className="h-4 w-4" />
               Filters
             </Button>
-            
-            <Select value={`${sortField}-${sortDirection}`} onValueChange={(value) => {
-              const [field, direction] = value.split('-');
-              setSortField(field);
-              setSortDirection(direction as "asc" | "desc");
-            }}>
+
+            <Select
+              value={`${sortField}-${sortDirection}`}
+              onValueChange={(value) => {
+                const [field, direction] = value.split("-");
+                setSortField(field);
+                setSortDirection(direction as "asc" | "desc");
+              }}
+            >
               <SelectTrigger className="w-48">
                 <SelectValue placeholder="Sort by" />
               </SelectTrigger>
@@ -624,8 +676,12 @@ export default function Vehicles() {
                 <SelectItem value="driver-desc">Driver (Z-A)</SelectItem>
                 <SelectItem value="status-asc">Status (A-Z)</SelectItem>
                 <SelectItem value="fuel-desc">Fuel (High-Low)</SelectItem>
-                <SelectItem value="efficiency-desc">Efficiency (High-Low)</SelectItem>
-                <SelectItem value="odometer-desc">Mileage (High-Low)</SelectItem>
+                <SelectItem value="efficiency-desc">
+                  Efficiency (High-Low)
+                </SelectItem>
+                <SelectItem value="odometer-desc">
+                  Mileage (High-Low)
+                </SelectItem>
               </SelectContent>
             </Select>
 
@@ -659,57 +715,90 @@ export default function Vehicles() {
             <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div>
-                  <Label className="text-sm font-medium mb-2 block">Status</Label>
+                  <Label className="text-sm font-medium mb-2 block">
+                    Status
+                  </Label>
                   <div className="space-y-2">
-                    {["moving", "idle", "parked", "offline", "maintenance"].map((status) => (
-                      <div key={status} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`status-${status}`}
-                          checked={filters.status?.includes(status) || false}
-                          onCheckedChange={(checked) => {
-                            const newStatuses = filters.status || [];
-                            if (checked) {
-                              setFilters({...filters, status: [...newStatuses, status]});
-                            } else {
-                              setFilters({...filters, status: newStatuses.filter(s => s !== status)});
-                            }
-                          }}
-                        />
-                        <Label htmlFor={`status-${status}`} className="text-sm capitalize">
-                          {status.replace("_", " ")}
-                        </Label>
-                      </div>
-                    ))}
+                    {["moving", "idle", "parked", "offline", "maintenance"].map(
+                      (status) => (
+                        <div
+                          key={status}
+                          className="flex items-center space-x-2"
+                        >
+                          <Checkbox
+                            id={`status-${status}`}
+                            checked={filters.status?.includes(status) || false}
+                            onCheckedChange={(checked) => {
+                              const newStatuses = filters.status || [];
+                              if (checked) {
+                                setFilters({
+                                  ...filters,
+                                  status: [...newStatuses, status],
+                                });
+                              } else {
+                                setFilters({
+                                  ...filters,
+                                  status: newStatuses.filter(
+                                    (s) => s !== status,
+                                  ),
+                                });
+                              }
+                            }}
+                          />
+                          <Label
+                            htmlFor={`status-${status}`}
+                            className="text-sm capitalize"
+                          >
+                            {status.replace("_", " ")}
+                          </Label>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium mb-2 block">Vehicle Type</Label>
+                  <Label className="text-sm font-medium mb-2 block">
+                    Vehicle Type
+                  </Label>
                   <div className="space-y-2">
-                    {["truck", "van", "car", "bus", "motorcycle"].map((type) => (
-                      <div key={type} className="flex items-center space-x-2">
-                        <Checkbox
-                          id={`type-${type}`}
-                          checked={filters.type?.includes(type) || false}
-                          onCheckedChange={(checked) => {
-                            const newTypes = filters.type || [];
-                            if (checked) {
-                              setFilters({...filters, type: [...newTypes, type]});
-                            } else {
-                              setFilters({...filters, type: newTypes.filter(t => t !== type)});
-                            }
-                          }}
-                        />
-                        <Label htmlFor={`type-${type}`} className="text-sm capitalize">
-                          {type}
-                        </Label>
-                      </div>
-                    ))}
+                    {["truck", "van", "car", "bus", "motorcycle"].map(
+                      (type) => (
+                        <div key={type} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={`type-${type}`}
+                            checked={filters.type?.includes(type) || false}
+                            onCheckedChange={(checked) => {
+                              const newTypes = filters.type || [];
+                              if (checked) {
+                                setFilters({
+                                  ...filters,
+                                  type: [...newTypes, type],
+                                });
+                              } else {
+                                setFilters({
+                                  ...filters,
+                                  type: newTypes.filter((t) => t !== type),
+                                });
+                              }
+                            }}
+                          />
+                          <Label
+                            htmlFor={`type-${type}`}
+                            className="text-sm capitalize"
+                          >
+                            {type}
+                          </Label>
+                        </div>
+                      ),
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium mb-2 block">Maintenance Due</Label>
+                  <Label className="text-sm font-medium mb-2 block">
+                    Maintenance Due
+                  </Label>
                   <div className="space-y-2">
                     <div className="flex items-center space-x-2">
                       <Checkbox id="maintenance-due" />
@@ -727,7 +816,9 @@ export default function Vehicles() {
                 </div>
 
                 <div>
-                  <Label className="text-sm font-medium mb-2 block">Quick Actions</Label>
+                  <Label className="text-sm font-medium mb-2 block">
+                    Quick Actions
+                  </Label>
                   <div className="space-y-2">
                     <Button
                       variant="outline"
@@ -746,15 +837,18 @@ export default function Vehicles() {
         )}
 
         {/* Vehicles Grid/List */}
-        <div className={viewMode === "grid" 
-          ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" 
-          : "space-y-4"
-        }>
+        <div
+          className={
+            viewMode === "grid"
+              ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+              : "space-y-4"
+          }
+        >
           {filteredAndSortedVehicles.map((vehicle) => (
-            <Card 
-              key={vehicle.id} 
+            <Card
+              key={vehicle.id}
               className={`hover:shadow-lg transition-shadow cursor-pointer ${
-                isMaintenanceDue(vehicle) ? 'border-amber-200 bg-amber-50' : ''
+                isMaintenanceDue(vehicle) ? "border-amber-200 bg-amber-50" : ""
               }`}
               onClick={() => setSelectedVehicle(vehicle)}
             >
@@ -771,15 +865,19 @@ export default function Vehicles() {
                       </p>
                     </div>
                   </div>
-                  <Badge className={`${getStatusColor(vehicle.status.status)} border`}>
+                  <Badge
+                    className={`${getStatusColor(vehicle.status.status)} border`}
+                  >
                     <div className="flex items-center gap-1">
                       {getStatusIcon(vehicle.status.status)}
-                      <span className="capitalize">{vehicle.status.status}</span>
+                      <span className="capitalize">
+                        {vehicle.status.status}
+                      </span>
                     </div>
                   </Badge>
                 </div>
               </CardHeader>
-              
+
               <CardContent>
                 <div className="space-y-3">
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -789,28 +887,37 @@ export default function Vehicles() {
                     </div>
                     <div>
                       <p className="text-muted-foreground">License Plate</p>
-                      <p className="font-medium">{vehicle.specs.licensePlate}</p>
+                      <p className="font-medium">
+                        {vehicle.specs.licensePlate}
+                      </p>
                     </div>
                     <div>
                       <p className="text-muted-foreground">Fuel Level</p>
                       <div className="flex items-center gap-2">
                         <div className="flex-1 bg-gray-200 rounded-full h-2">
-                          <div 
+                          <div
                             className={`h-2 rounded-full ${
-                              vehicle.status.fuelLevel > 50 ? 'bg-green-500' :
-                              vehicle.status.fuelLevel > 25 ? 'bg-yellow-500' : 'bg-red-500'
+                              vehicle.status.fuelLevel > 50
+                                ? "bg-green-500"
+                                : vehicle.status.fuelLevel > 25
+                                  ? "bg-yellow-500"
+                                  : "bg-red-500"
                             }`}
                             style={{ width: `${vehicle.status.fuelLevel}%` }}
                           />
                         </div>
-                        <span className="text-xs font-medium">{vehicle.status.fuelLevel}%</span>
+                        <span className="text-xs font-medium">
+                          {vehicle.status.fuelLevel}%
+                        </span>
                       </div>
                     </div>
                     <div>
                       <p className="text-muted-foreground">Efficiency</p>
                       <div className="flex items-center gap-1">
                         <Star className="h-3 w-3 text-yellow-500" />
-                        <span className="font-medium">{vehicle.efficiency}%</span>
+                        <span className="font-medium">
+                          {vehicle.efficiency}%
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -819,7 +926,9 @@ export default function Vehicles() {
                     <div className="bg-amber-100 border border-amber-200 rounded-lg p-2">
                       <div className="flex items-center gap-2 text-amber-800">
                         <AlertTriangle className="h-4 w-4" />
-                        <span className="text-xs font-medium">Maintenance due soon</span>
+                        <span className="text-xs font-medium">
+                          Maintenance due soon
+                        </span>
                       </div>
                     </div>
                   )}
@@ -827,23 +936,23 @@ export default function Vehicles() {
                   <Separator />
 
                   <div className="flex gap-2">
-                    <Button 
-                      size="sm" 
-                      variant="outline" 
+                    <Button
+                      size="sm"
+                      variant="outline"
                       className="flex-1 gap-1"
                       onClick={(e) => {
                         e.stopPropagation();
-                        navigate('/live-map');
+                        navigate("/live-map");
                       }}
                     >
                       <MapPin className="h-3 w-3" />
                       View on Map
                     </Button>
-                    
+
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button 
-                          size="sm" 
+                        <Button
+                          size="sm"
                           variant="outline"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -852,17 +961,22 @@ export default function Vehicles() {
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Send Message to {vehicle.driver}</DialogTitle>
+                          <DialogTitle>
+                            Send Message to {vehicle.driver}
+                          </DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4">
                           <div>
                             <Label htmlFor="message-subject">Subject</Label>
-                            <Input id="message-subject" placeholder="Enter message subject..." />
+                            <Input
+                              id="message-subject"
+                              placeholder="Enter message subject..."
+                            />
                           </div>
                           <div>
                             <Label htmlFor="message-content">Message</Label>
-                            <Textarea 
-                              id="message-content" 
+                            <Textarea
+                              id="message-content"
                               placeholder="Type your message here..."
                               rows={4}
                             />
@@ -877,8 +991,8 @@ export default function Vehicles() {
 
                     <Dialog>
                       <DialogTrigger asChild>
-                        <Button 
-                          size="sm" 
+                        <Button
+                          size="sm"
                           variant="outline"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -887,13 +1001,17 @@ export default function Vehicles() {
                       </DialogTrigger>
                       <DialogContent>
                         <DialogHeader>
-                          <DialogTitle>Assign Driver to {vehicle.name}</DialogTitle>
+                          <DialogTitle>
+                            Assign Driver to {vehicle.name}
+                          </DialogTitle>
                         </DialogHeader>
                         <div className="space-y-4">
                           <div>
-                            <Label htmlFor="current-driver">Current Driver</Label>
-                            <Input 
-                              id="current-driver" 
+                            <Label htmlFor="current-driver">
+                              Current Driver
+                            </Label>
+                            <Input
+                              id="current-driver"
                               value={vehicle.driver}
                               disabled
                             />
@@ -909,7 +1027,10 @@ export default function Vehicles() {
                                   <SelectItem key={driver.id} value={driver.id}>
                                     <div className="flex items-center gap-2">
                                       <span>{driver.name}</span>
-                                      <Badge variant="outline" className="text-xs">
+                                      <Badge
+                                        variant="outline"
+                                        className="text-xs"
+                                      >
                                         Rating: {driver.rating}
                                       </Badge>
                                     </div>
@@ -935,7 +1056,10 @@ export default function Vehicles() {
 
       {/* Vehicle Detail Modal */}
       {selectedVehicle && (
-        <Dialog open={!!selectedVehicle} onOpenChange={() => setSelectedVehicle(null)}>
+        <Dialog
+          open={!!selectedVehicle}
+          onOpenChange={() => setSelectedVehicle(null)}
+        >
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle className="flex items-center gap-3">
@@ -943,14 +1067,17 @@ export default function Vehicles() {
                   {getVehicleIcon(selectedVehicle.type)}
                 </div>
                 <div>
-                  <span>{selectedVehicle.name} - {selectedVehicle.specs.make} {selectedVehicle.specs.model}</span>
+                  <span>
+                    {selectedVehicle.name} - {selectedVehicle.specs.make}{" "}
+                    {selectedVehicle.specs.model}
+                  </span>
                   <p className="text-sm text-muted-foreground font-normal">
                     {selectedVehicle.specs.licensePlate}
                   </p>
                 </div>
               </DialogTitle>
             </DialogHeader>
-            
+
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="overview">Overview</TabsTrigger>
@@ -965,10 +1092,14 @@ export default function Vehicles() {
                     <CardContent className="p-4">
                       <div className="flex items-center gap-2 mb-2">
                         <User className="h-4 w-4 text-blue-500" />
-                        <span className="text-sm font-medium">Driver Information</span>
+                        <span className="text-sm font-medium">
+                          Driver Information
+                        </span>
                       </div>
                       <p className="font-semibold">{selectedVehicle.driver}</p>
-                      <Badge className={`mt-1 ${getStatusColor(selectedVehicle.status.status)} border`}>
+                      <Badge
+                        className={`mt-1 ${getStatusColor(selectedVehicle.status.status)} border`}
+                      >
                         {selectedVehicle.status.status}
                       </Badge>
                     </CardContent>
@@ -983,15 +1114,22 @@ export default function Vehicles() {
                       <div className="space-y-1">
                         <div className="flex justify-between">
                           <span className="text-sm">Current Level:</span>
-                          <span className="font-semibold">{selectedVehicle.status.fuelLevel}%</span>
+                          <span className="font-semibold">
+                            {selectedVehicle.status.fuelLevel}%
+                          </span>
                         </div>
                         <div className="bg-gray-200 rounded-full h-2">
-                          <div 
+                          <div
                             className={`h-2 rounded-full ${
-                              selectedVehicle.status.fuelLevel > 50 ? 'bg-green-500' :
-                              selectedVehicle.status.fuelLevel > 25 ? 'bg-yellow-500' : 'bg-red-500'
+                              selectedVehicle.status.fuelLevel > 50
+                                ? "bg-green-500"
+                                : selectedVehicle.status.fuelLevel > 25
+                                  ? "bg-yellow-500"
+                                  : "bg-red-500"
                             }`}
-                            style={{ width: `${selectedVehicle.status.fuelLevel}%` }}
+                            style={{
+                              width: `${selectedVehicle.status.fuelLevel}%`,
+                            }}
                           />
                         </div>
                         <div className="flex justify-between text-xs text-muted-foreground">
@@ -1011,15 +1149,21 @@ export default function Vehicles() {
                       <div className="space-y-1">
                         <div className="flex justify-between">
                           <span className="text-sm">Efficiency:</span>
-                          <span className="font-semibold">{selectedVehicle.efficiency}%</span>
+                          <span className="font-semibold">
+                            {selectedVehicle.efficiency}%
+                          </span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm">Safety Score:</span>
-                          <span className="font-semibold">{selectedVehicle.score}/100</span>
+                          <span className="font-semibold">
+                            {selectedVehicle.score}/100
+                          </span>
                         </div>
                         <div className="flex justify-between">
                           <span className="text-sm">Odometer:</span>
-                          <span className="font-semibold">{selectedVehicle.odometer.toLocaleString()} km</span>
+                          <span className="font-semibold">
+                            {selectedVehicle.odometer.toLocaleString()} km
+                          </span>
                         </div>
                       </div>
                     </CardContent>
@@ -1031,33 +1175,48 @@ export default function Vehicles() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Vehicle Specifications</CardTitle>
+                      <CardTitle className="text-lg">
+                        Vehicle Specifications
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <p className="text-muted-foreground">Make & Model</p>
-                          <p className="font-medium">{selectedVehicle.specs.make} {selectedVehicle.specs.model}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.specs.make}{" "}
+                            {selectedVehicle.specs.model}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Year</p>
-                          <p className="font-medium">{selectedVehicle.specs.year}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.specs.year}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">License Plate</p>
-                          <p className="font-medium">{selectedVehicle.specs.licensePlate}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.specs.licensePlate}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Color</p>
-                          <p className="font-medium">{selectedVehicle.specs.color}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.specs.color}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">VIN</p>
-                          <p className="font-medium text-xs">{selectedVehicle.specs.vin}</p>
+                          <p className="font-medium text-xs">
+                            {selectedVehicle.specs.vin}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Fuel Type</p>
-                          <p className="font-medium capitalize">{selectedVehicle.specs.fuelType}</p>
+                          <p className="font-medium capitalize">
+                            {selectedVehicle.specs.fuelType}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -1065,39 +1224,57 @@ export default function Vehicles() {
 
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Capacity & Registration</CardTitle>
+                      <CardTitle className="text-lg">
+                        Capacity & Registration
+                      </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-3">
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         {selectedVehicle.specs.capacity.passengers && (
                           <div>
                             <p className="text-muted-foreground">Passengers</p>
-                            <p className="font-medium">{selectedVehicle.specs.capacity.passengers}</p>
+                            <p className="font-medium">
+                              {selectedVehicle.specs.capacity.passengers}
+                            </p>
                           </div>
                         )}
                         {selectedVehicle.specs.capacity.cargo && (
                           <div>
                             <p className="text-muted-foreground">Cargo</p>
-                            <p className="font-medium">{selectedVehicle.specs.capacity.cargo} m³</p>
+                            <p className="font-medium">
+                              {selectedVehicle.specs.capacity.cargo} m³
+                            </p>
                           </div>
                         )}
                         {selectedVehicle.specs.capacity.weight && (
                           <div>
                             <p className="text-muted-foreground">Weight</p>
-                            <p className="font-medium">{selectedVehicle.specs.capacity.weight} tons</p>
+                            <p className="font-medium">
+                              {selectedVehicle.specs.capacity.weight} tons
+                            </p>
                           </div>
                         )}
                         <div>
-                          <p className="text-muted-foreground">Insurance Expiry</p>
-                          <p className="font-medium">{formatDate(selectedVehicle.insuranceExpiry)}</p>
+                          <p className="text-muted-foreground">
+                            Insurance Expiry
+                          </p>
+                          <p className="font-medium">
+                            {formatDate(selectedVehicle.insuranceExpiry)}
+                          </p>
                         </div>
                         <div>
-                          <p className="text-muted-foreground">Registration Expiry</p>
-                          <p className="font-medium">{formatDate(selectedVehicle.registrationExpiry)}</p>
+                          <p className="text-muted-foreground">
+                            Registration Expiry
+                          </p>
+                          <p className="font-medium">
+                            {formatDate(selectedVehicle.registrationExpiry)}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Purchase Date</p>
-                          <p className="font-medium">{formatDate(selectedVehicle.purchaseDate)}</p>
+                          <p className="font-medium">
+                            {formatDate(selectedVehicle.purchaseDate)}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -1117,12 +1294,24 @@ export default function Vehicles() {
                     <CardContent className="space-y-3">
                       <div className="space-y-2">
                         <div>
-                          <p className="text-sm text-muted-foreground">Last Maintenance</p>
-                          <p className="font-medium">{selectedVehicle.lastMaintenance ? formatDate(selectedVehicle.lastMaintenance) : 'N/A'}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Last Maintenance
+                          </p>
+                          <p className="font-medium">
+                            {selectedVehicle.lastMaintenance
+                              ? formatDate(selectedVehicle.lastMaintenance)
+                              : "N/A"}
+                          </p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Next Maintenance</p>
-                          <p className="font-medium">{selectedVehicle.nextMaintenance ? formatDate(selectedVehicle.nextMaintenance) : 'N/A'}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Next Maintenance
+                          </p>
+                          <p className="font-medium">
+                            {selectedVehicle.nextMaintenance
+                              ? formatDate(selectedVehicle.nextMaintenance)
+                              : "N/A"}
+                          </p>
                           {isMaintenanceDue(selectedVehicle) && (
                             <Badge className="mt-1 bg-amber-100 text-amber-800 border-amber-200">
                               Due Soon
@@ -1130,8 +1319,13 @@ export default function Vehicles() {
                           )}
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground">Engine Hours</p>
-                          <p className="font-medium">{selectedVehicle.status.engineHours?.toLocaleString() || 'N/A'}</p>
+                          <p className="text-sm text-muted-foreground">
+                            Engine Hours
+                          </p>
+                          <p className="font-medium">
+                            {selectedVehicle.status.engineHours?.toLocaleString() ||
+                              "N/A"}
+                          </p>
                         </div>
                       </div>
                     </CardContent>
@@ -1139,16 +1333,25 @@ export default function Vehicles() {
 
                   <Card>
                     <CardHeader>
-                      <CardTitle className="text-lg">Maintenance History</CardTitle>
+                      <CardTitle className="text-lg">
+                        Maintenance History
+                      </CardTitle>
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-3">
                         {selectedVehicle.maintenanceRecords.map((record) => (
-                          <div key={record.id} className="border rounded-lg p-3">
+                          <div
+                            key={record.id}
+                            className="border rounded-lg p-3"
+                          >
                             <div className="flex items-center justify-between mb-2">
-                              <Badge 
-                                variant="outline" 
-                                className={record.status === 'completed' ? 'text-green-600 border-green-200' : 'text-yellow-600 border-yellow-200'}
+                              <Badge
+                                variant="outline"
+                                className={
+                                  record.status === "completed"
+                                    ? "text-green-600 border-green-200"
+                                    : "text-yellow-600 border-yellow-200"
+                                }
                               >
                                 {record.type}
                               </Badge>
@@ -1156,10 +1359,14 @@ export default function Vehicles() {
                                 {formatDate(record.date)}
                               </span>
                             </div>
-                            <p className="text-sm font-medium mb-1">{record.description}</p>
+                            <p className="text-sm font-medium mb-1">
+                              {record.description}
+                            </p>
                             <div className="grid grid-cols-2 gap-2 text-xs text-muted-foreground">
-                              <span>Cost: ${record.cost || 'N/A'}</span>
-                              <span>Mileage: {record.mileage.toLocaleString()} km</span>
+                              <span>Cost: ${record.cost || "N/A"}</span>
+                              <span>
+                                Mileage: {record.mileage.toLocaleString()} km
+                              </span>
                             </div>
                             {record.servicedBy && (
                               <p className="text-xs text-muted-foreground mt-1">
@@ -1187,35 +1394,47 @@ export default function Vehicles() {
                       <div className="grid grid-cols-2 gap-4 text-sm">
                         <div>
                           <p className="text-muted-foreground">Latitude</p>
-                          <p className="font-medium">{selectedVehicle.location.latitude.toFixed(6)}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.location.latitude.toFixed(6)}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Longitude</p>
-                          <p className="font-medium">{selectedVehicle.location.longitude.toFixed(6)}</p>
+                          <p className="font-medium">
+                            {selectedVehicle.location.longitude.toFixed(6)}
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Altitude</p>
-                          <p className="font-medium">{selectedVehicle.location.altitude.toFixed(1)} m</p>
+                          <p className="font-medium">
+                            {selectedVehicle.location.altitude.toFixed(1)} m
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Accuracy</p>
-                          <p className="font-medium">{selectedVehicle.location.accuracy.toFixed(1)} m</p>
+                          <p className="font-medium">
+                            {selectedVehicle.location.accuracy.toFixed(1)} m
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Speed</p>
-                          <p className="font-medium">{selectedVehicle.location.speed} km/h</p>
+                          <p className="font-medium">
+                            {selectedVehicle.location.speed} km/h
+                          </p>
                         </div>
                         <div>
                           <p className="text-muted-foreground">Last Update</p>
-                          <p className="font-medium">{formatDate(selectedVehicle.location.timestamp)}</p>
+                          <p className="font-medium">
+                            {formatDate(selectedVehicle.location.timestamp)}
+                          </p>
                         </div>
                       </div>
                       <Separator />
-                      <Button 
+                      <Button
                         className="w-full gap-2"
                         onClick={() => {
                           setSelectedVehicle(null);
-                          navigate('/live-map');
+                          navigate("/live-map");
                         }}
                       >
                         <MapPin className="h-4 w-4" />

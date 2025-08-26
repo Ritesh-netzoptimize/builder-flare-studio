@@ -22,10 +22,15 @@ import {
   AlertCircle,
   Map,
   Navigation,
-  BarChart3
+  BarChart3,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import type { Vehicle, FleetStats, FleetKPIs, Alert } from "@shared/fleet-types";
+import type {
+  Vehicle,
+  FleetStats,
+  FleetKPIs,
+  Alert,
+} from "@shared/fleet-types";
 
 export default function Index() {
   const navigate = useNavigate();
@@ -46,7 +51,7 @@ export default function Index() {
         latitude: 30.6763796,
         longitude: 76.7399375,
         speed: 0,
-        timestamp: "2025-08-26T08:22:10.000Z"
+        timestamp: "2025-08-26T08:22:10.000Z",
       },
       status: {
         deviceId: "akshay",
@@ -55,10 +60,10 @@ export default function Index() {
         driver: "Akshay Kumar",
         ignitionStatus: true,
         fuelLevel: 85,
-        engineHours: 2450
+        engineHours: 2450,
       },
       efficiency: 92,
-      score: 95
+      score: 95,
     },
     {
       id: "VEH-002",
@@ -74,7 +79,7 @@ export default function Index() {
         latitude: 30.6850123,
         longitude: 76.7401234,
         speed: 45,
-        timestamp: "2025-08-26T08:20:00.000Z"
+        timestamp: "2025-08-26T08:20:00.000Z",
       },
       status: {
         deviceId: "driver_002",
@@ -83,21 +88,22 @@ export default function Index() {
         driver: "Sarah Wilson",
         ignitionStatus: true,
         fuelLevel: 72,
-        engineHours: 1890
+        engineHours: 1890,
       },
       efficiency: 89,
-      score: 94
+      score: 94,
     },
     // Add more vehicles with similar structure...
   ];
 
   // Calculate fleet stats from real vehicle data
   const fleetStats: FleetStats = {
-    active: vehicles.filter(v => v.status.status === 'moving').length,
-    idle: vehicles.filter(v => v.status.status === 'idle').length,
-    offline: vehicles.filter(v => v.status.status === 'offline').length,
-    maintenance: vehicles.filter(v => v.status.status === 'maintenance').length,
-    total: vehicles.length
+    active: vehicles.filter((v) => v.status.status === "moving").length,
+    idle: vehicles.filter((v) => v.status.status === "idle").length,
+    offline: vehicles.filter((v) => v.status.status === "offline").length,
+    maintenance: vehicles.filter((v) => v.status.status === "maintenance")
+      .length,
+    total: vehicles.length,
   };
 
   // Expand fleet stats for realistic dashboard
@@ -114,7 +120,7 @@ export default function Index() {
     distanceChange: 5.8,
     avgSafetyScore: 87,
     safetyChange: 3.2,
-    activeAlerts: 7
+    activeAlerts: 7,
   };
 
   const alerts: Alert[] = [
@@ -128,7 +134,7 @@ export default function Index() {
       severity: "high",
       location: [30.6800123, 76.7450234],
       description: "Vehicle exceeded speed limit by 15 km/h",
-      resolved: false
+      resolved: false,
     },
     {
       id: "ALT-002",
@@ -140,7 +146,7 @@ export default function Index() {
       severity: "medium",
       location: [30.6850123, 76.7401234],
       description: "Harsh braking detected",
-      resolved: false
+      resolved: false,
     },
     {
       id: "ALT-003",
@@ -152,7 +158,7 @@ export default function Index() {
       severity: "high",
       location: [30.6900456, 76.7500789],
       description: "Vehicle left authorized zone",
-      resolved: false
+      resolved: false,
     },
     {
       id: "ALT-004",
@@ -164,7 +170,7 @@ export default function Index() {
       severity: "medium",
       location: [30.6950789, 76.7600123],
       description: "Scheduled maintenance due",
-      resolved: false
+      resolved: false,
     },
     {
       id: "ALT-005",
@@ -176,49 +182,63 @@ export default function Index() {
       severity: "low",
       location: [30.7000123, 76.7700456],
       description: "Fuel level below 15%",
-      resolved: false
-    }
+      resolved: false,
+    },
   ];
 
   const topVehicles = vehicles.slice(0, 3);
   const bottomVehicles = [
     { id: "TRK-299", score: 72, efficiency: 68, driver: "David Brown" },
     { id: "VAN-187", score: 75, efficiency: 71, driver: "Emma Davis" },
-    { id: "TRK-188", score: 78, efficiency: 74, driver: "Tom Wilson" }
+    { id: "TRK-188", score: 78, efficiency: 74, driver: "Tom Wilson" },
   ];
 
   const getAlertIcon = (type: string) => {
     switch (type) {
-      case "speeding": return <TrendingUp className="h-4 w-4" />;
-      case "harsh_braking": return <AlertTriangle className="h-4 w-4" />;
-      case "geofence": return <MapPin className="h-4 w-4" />;
-      case "maintenance": return <Wrench className="h-4 w-4" />;
-      case "fuel_low": return <Fuel className="h-4 w-4" />;
-      case "engine_fault": return <AlertCircle className="h-4 w-4" />;
-      default: return <AlertCircle className="h-4 w-4" />;
+      case "speeding":
+        return <TrendingUp className="h-4 w-4" />;
+      case "harsh_braking":
+        return <AlertTriangle className="h-4 w-4" />;
+      case "geofence":
+        return <MapPin className="h-4 w-4" />;
+      case "maintenance":
+        return <Wrench className="h-4 w-4" />;
+      case "fuel_low":
+        return <Fuel className="h-4 w-4" />;
+      case "engine_fault":
+        return <AlertCircle className="h-4 w-4" />;
+      default:
+        return <AlertCircle className="h-4 w-4" />;
     }
   };
 
   const getSeverityColor = (severity: string) => {
     switch (severity) {
-      case "high": return "bg-fleet-danger text-white";
-      case "medium": return "bg-fleet-warning text-black";
-      case "low": return "bg-fleet-info text-white";
-      default: return "bg-muted text-muted-foreground";
+      case "high":
+        return "bg-fleet-danger text-white";
+      case "medium":
+        return "bg-fleet-warning text-black";
+      case "low":
+        return "bg-fleet-info text-white";
+      default:
+        return "bg-muted text-muted-foreground";
     }
   };
 
   const formatTimeAgo = (timestamp: string) => {
     const now = new Date();
     const alertTime = new Date(timestamp);
-    const diffInMinutes = Math.floor((now.getTime() - alertTime.getTime()) / (1000 * 60));
+    const diffInMinutes = Math.floor(
+      (now.getTime() - alertTime.getTime()) / (1000 * 60),
+    );
 
     if (diffInMinutes < 1) return "Just now";
     if (diffInMinutes < 60) return `${diffInMinutes} min ago`;
     const diffInHours = Math.floor(diffInMinutes / 60);
-    if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+    if (diffInHours < 24)
+      return `${diffInHours} hour${diffInHours > 1 ? "s" : ""} ago`;
     const diffInDays = Math.floor(diffInHours / 24);
-    return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
+    return `${diffInDays} day${diffInDays > 1 ? "s" : ""} ago`;
   };
 
   return (
@@ -232,14 +252,18 @@ export default function Index() {
                 <Truck className="h-6 w-6 text-primary-foreground" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">FleetTracker Pro</h1>
-                <p className="text-sm text-muted-foreground">Fleet Management Dashboard</p>
+                <h1 className="text-xl font-bold text-foreground">
+                  FleetTracker Pro
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  Fleet Management Dashboard
+                </p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex gap-2">
                 <Button
-                  onClick={() => navigate('/vehicles')}
+                  onClick={() => navigate("/vehicles")}
                   className="gap-2"
                   variant="outline"
                 >
@@ -247,7 +271,7 @@ export default function Index() {
                   Vehicles
                 </Button>
                 <Button
-                  onClick={() => navigate('/live-map')}
+                  onClick={() => navigate("/live-map")}
                   className="gap-2"
                   variant="outline"
                 >
@@ -255,7 +279,7 @@ export default function Index() {
                   Live Map
                 </Button>
                 <Button
-                  onClick={() => navigate('/reports')}
+                  onClick={() => navigate("/reports")}
                   className="gap-2"
                   variant="outline"
                 >
@@ -269,7 +293,9 @@ export default function Index() {
               </Badge>
               <div className="text-right">
                 <p className="text-sm font-medium">Fleet Manager</p>
-                <p className="text-xs text-muted-foreground">Last updated: 30 sec ago</p>
+                <p className="text-xs text-muted-foreground">
+                  Last updated: 30 sec ago
+                </p>
               </div>
             </div>
           </div>
@@ -283,14 +309,24 @@ export default function Index() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-green-700">Active Vehicles</p>
-                  <p className="text-2xl font-bold text-green-900">{fleetStats.active}</p>
+                  <p className="text-sm font-medium text-green-700">
+                    Active Vehicles
+                  </p>
+                  <p className="text-2xl font-bold text-green-900">
+                    {fleetStats.active}
+                  </p>
                 </div>
                 <CheckCircle2 className="h-8 w-8 text-green-600" />
               </div>
               <div className="mt-2">
-                <Progress value={(fleetStats.active / fleetStats.total) * 100} className="h-2" />
-                <p className="text-xs text-green-600 mt-1">{((fleetStats.active / fleetStats.total) * 100).toFixed(1)}% of fleet</p>
+                <Progress
+                  value={(fleetStats.active / fleetStats.total) * 100}
+                  className="h-2"
+                />
+                <p className="text-xs text-green-600 mt-1">
+                  {((fleetStats.active / fleetStats.total) * 100).toFixed(1)}%
+                  of fleet
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -299,14 +335,24 @@ export default function Index() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-yellow-700">Idle Vehicles</p>
-                  <p className="text-2xl font-bold text-yellow-900">{fleetStats.idle}</p>
+                  <p className="text-sm font-medium text-yellow-700">
+                    Idle Vehicles
+                  </p>
+                  <p className="text-2xl font-bold text-yellow-900">
+                    {fleetStats.idle}
+                  </p>
                 </div>
                 <Pause className="h-8 w-8 text-yellow-600" />
               </div>
               <div className="mt-2">
-                <Progress value={(fleetStats.idle / fleetStats.total) * 100} className="h-2" />
-                <p className="text-xs text-yellow-600 mt-1">{((fleetStats.idle / fleetStats.total) * 100).toFixed(1)}% of fleet</p>
+                <Progress
+                  value={(fleetStats.idle / fleetStats.total) * 100}
+                  className="h-2"
+                />
+                <p className="text-xs text-yellow-600 mt-1">
+                  {((fleetStats.idle / fleetStats.total) * 100).toFixed(1)}% of
+                  fleet
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -315,14 +361,24 @@ export default function Index() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-red-700">Offline Vehicles</p>
-                  <p className="text-2xl font-bold text-red-900">{fleetStats.offline}</p>
+                  <p className="text-sm font-medium text-red-700">
+                    Offline Vehicles
+                  </p>
+                  <p className="text-2xl font-bold text-red-900">
+                    {fleetStats.offline}
+                  </p>
                 </div>
                 <XCircle className="h-8 w-8 text-red-600" />
               </div>
               <div className="mt-2">
-                <Progress value={(fleetStats.offline / fleetStats.total) * 100} className="h-2" />
-                <p className="text-xs text-red-600 mt-1">{((fleetStats.offline / fleetStats.total) * 100).toFixed(1)}% of fleet</p>
+                <Progress
+                  value={(fleetStats.offline / fleetStats.total) * 100}
+                  className="h-2"
+                />
+                <p className="text-xs text-red-600 mt-1">
+                  {((fleetStats.offline / fleetStats.total) * 100).toFixed(1)}%
+                  of fleet
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -331,14 +387,26 @@ export default function Index() {
             <CardContent className="p-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-blue-700">In Maintenance</p>
-                  <p className="text-2xl font-bold text-blue-900">{fleetStats.maintenance}</p>
+                  <p className="text-sm font-medium text-blue-700">
+                    In Maintenance
+                  </p>
+                  <p className="text-2xl font-bold text-blue-900">
+                    {fleetStats.maintenance}
+                  </p>
                 </div>
                 <Wrench className="h-8 w-8 text-blue-600" />
               </div>
               <div className="mt-2">
-                <Progress value={(fleetStats.maintenance / fleetStats.total) * 100} className="h-2" />
-                <p className="text-xs text-blue-600 mt-1">{((fleetStats.maintenance / fleetStats.total) * 100).toFixed(1)}% of fleet</p>
+                <Progress
+                  value={(fleetStats.maintenance / fleetStats.total) * 100}
+                  className="h-2"
+                />
+                <p className="text-xs text-blue-600 mt-1">
+                  {((fleetStats.maintenance / fleetStats.total) * 100).toFixed(
+                    1,
+                  )}
+                  % of fleet
+                </p>
               </div>
             </CardContent>
           </Card>
@@ -355,10 +423,14 @@ export default function Index() {
                 </div>
               </div>
               <div className="mt-2">
-                <p className="text-2xl font-bold">{kpis.avgFuelConsumption} L/100km</p>
+                <p className="text-2xl font-bold">
+                  {kpis.avgFuelConsumption} L/100km
+                </p>
                 <div className="flex items-center gap-1 mt-1">
                   <TrendingDown className="h-3 w-3 text-green-600" />
-                  <span className="text-xs text-green-600">{Math.abs(kpis.fuelChange)}% improvement</span>
+                  <span className="text-xs text-green-600">
+                    {Math.abs(kpis.fuelChange)}% improvement
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -373,10 +445,14 @@ export default function Index() {
                 </div>
               </div>
               <div className="mt-2">
-                <p className="text-2xl font-bold">{kpis.totalDistance.toLocaleString()} km</p>
+                <p className="text-2xl font-bold">
+                  {kpis.totalDistance.toLocaleString()} km
+                </p>
                 <div className="flex items-center gap-1 mt-1">
                   <TrendingUp className="h-3 w-3 text-green-600" />
-                  <span className="text-xs text-green-600">+{kpis.distanceChange}% this week</span>
+                  <span className="text-xs text-green-600">
+                    +{kpis.distanceChange}% this week
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -394,7 +470,9 @@ export default function Index() {
                 <p className="text-2xl font-bold">{kpis.avgSafetyScore}/100</p>
                 <div className="flex items-center gap-1 mt-1">
                   <TrendingUp className="h-3 w-3 text-green-600" />
-                  <span className="text-xs text-green-600">+{kpis.safetyChange}% this month</span>
+                  <span className="text-xs text-green-600">
+                    +{kpis.safetyChange}% this month
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -409,10 +487,14 @@ export default function Index() {
                 </div>
               </div>
               <div className="mt-2">
-                <p className="text-2xl font-bold text-red-600">{kpis.activeAlerts}</p>
+                <p className="text-2xl font-bold text-red-600">
+                  {kpis.activeAlerts}
+                </p>
                 <div className="flex items-center gap-1 mt-1">
                   <Clock className="h-3 w-3 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">Requires attention</span>
+                  <span className="text-xs text-muted-foreground">
+                    Requires attention
+                  </span>
                 </div>
               </div>
             </CardContent>
@@ -432,14 +514,21 @@ export default function Index() {
             <CardContent>
               <div className="space-y-3">
                 {alerts.map((alert) => (
-                  <div key={alert.id} className="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                  <div
+                    key={alert.id}
+                    className="flex items-center justify-between p-3 bg-slate-50 rounded-lg"
+                  >
                     <div className="flex items-center gap-3">
-                      <div className={`p-2 rounded-full ${getSeverityColor(alert.severity)}`}>
+                      <div
+                        className={`p-2 rounded-full ${getSeverityColor(alert.severity)}`}
+                      >
                         {getAlertIcon(alert.type)}
                       </div>
                       <div>
                         <p className="font-medium text-sm">
-                          {alert.type.replace("_", " ").replace(/\b\w/g, l => l.toUpperCase())}
+                          {alert.type
+                            .replace("_", " ")
+                            .replace(/\b\w/g, (l) => l.toUpperCase())}
                         </p>
                         <p className="text-xs text-muted-foreground">
                           {alert.vehicleName} • {alert.driver}
@@ -455,7 +544,8 @@ export default function Index() {
                       </Badge>
                       {alert.location && (
                         <p className="text-xs text-muted-foreground mt-1">
-                          {alert.location[0].toFixed(4)}, {alert.location[1].toFixed(4)}
+                          {alert.location[0].toFixed(4)},{" "}
+                          {alert.location[1].toFixed(4)}
                         </p>
                       )}
                     </div>
@@ -476,22 +566,33 @@ export default function Index() {
             <CardContent>
               <div className="space-y-4">
                 <div>
-                  <h4 className="font-semibold text-sm text-green-700 mb-3">Top Performers</h4>
+                  <h4 className="font-semibold text-sm text-green-700 mb-3">
+                    Top Performers
+                  </h4>
                   <div className="space-y-2">
                     {topVehicles.map((vehicle, index) => (
-                      <div key={vehicle.id} className="flex items-center justify-between p-2 bg-green-50 rounded-lg">
+                      <div
+                        key={vehicle.id}
+                        className="flex items-center justify-between p-2 bg-green-50 rounded-lg"
+                      >
                         <div className="flex items-center gap-3">
                           <div className="flex items-center justify-center w-6 h-6 bg-green-600 text-white text-xs font-bold rounded-full">
                             {index + 1}
                           </div>
                           <div>
                             <p className="font-medium text-sm">{vehicle.id}</p>
-                            <p className="text-xs text-muted-foreground">{vehicle.driver}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {vehicle.driver}
+                            </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-bold text-green-700">{vehicle.score}%</p>
-                          <p className="text-xs text-muted-foreground">{vehicle.efficiency}% efficiency</p>
+                          <p className="text-sm font-bold text-green-700">
+                            {vehicle.score}%
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {vehicle.efficiency}% efficiency
+                          </p>
                         </div>
                       </div>
                     ))}
@@ -501,22 +602,33 @@ export default function Index() {
                 <Separator />
 
                 <div>
-                  <h4 className="font-semibold text-sm text-red-700 mb-3">Needs Improvement</h4>
+                  <h4 className="font-semibold text-sm text-red-700 mb-3">
+                    Needs Improvement
+                  </h4>
                   <div className="space-y-2">
                     {bottomVehicles.map((vehicle, index) => (
-                      <div key={vehicle.id} className="flex items-center justify-between p-2 bg-red-50 rounded-lg">
+                      <div
+                        key={vehicle.id}
+                        className="flex items-center justify-between p-2 bg-red-50 rounded-lg"
+                      >
                         <div className="flex items-center gap-3">
                           <div className="flex items-center justify-center w-6 h-6 bg-red-600 text-white text-xs font-bold rounded-full">
                             {bottomVehicles.length - index}
                           </div>
                           <div>
                             <p className="font-medium text-sm">{vehicle.id}</p>
-                            <p className="text-xs text-muted-foreground">{vehicle.driver}</p>
+                            <p className="text-xs text-muted-foreground">
+                              {vehicle.driver}
+                            </p>
                           </div>
                         </div>
                         <div className="text-right">
-                          <p className="text-sm font-bold text-red-700">{vehicle.score}%</p>
-                          <p className="text-xs text-muted-foreground">{vehicle.efficiency}% efficiency</p>
+                          <p className="text-sm font-bold text-red-700">
+                            {vehicle.score}%
+                          </p>
+                          <p className="text-xs text-muted-foreground">
+                            {vehicle.efficiency}% efficiency
+                          </p>
                         </div>
                       </div>
                     ))}

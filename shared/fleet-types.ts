@@ -11,7 +11,7 @@ export interface VehicleLocation {
 
 export interface VehicleStatus {
   deviceId: string;
-  status: 'moving' | 'idle' | 'parked' | 'offline' | 'maintenance';
+  status: "moving" | "idle" | "parked" | "offline" | "maintenance";
   lastUpdate: string;
   driver?: string;
   ignitionStatus: boolean;
@@ -26,7 +26,7 @@ export interface VehicleSpecs {
   licensePlate: string;
   vin: string;
   color: string;
-  fuelType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  fuelType: "gasoline" | "diesel" | "electric" | "hybrid";
   capacity: {
     passengers?: number;
     cargo?: number; // in cubic meters
@@ -36,13 +36,13 @@ export interface VehicleSpecs {
 
 export interface MaintenanceRecord {
   id: string;
-  type: 'scheduled' | 'repair' | 'inspection' | 'emergency';
+  type: "scheduled" | "repair" | "inspection" | "emergency";
   description: string;
   date: string;
   nextDue?: string;
   cost?: number;
   mileage: number;
-  status: 'completed' | 'pending' | 'overdue';
+  status: "completed" | "pending" | "overdue";
   servicedBy?: string;
 }
 
@@ -50,7 +50,7 @@ export interface Vehicle {
   id: string;
   deviceId: string;
   name: string;
-  type: 'truck' | 'van' | 'car' | 'bus' | 'motorcycle' | 'trailer';
+  type: "truck" | "van" | "car" | "bus" | "motorcycle" | "trailer";
   specs: VehicleSpecs;
   driver: string;
   assignedDriverId?: string;
@@ -73,7 +73,7 @@ export interface Vehicle {
 export interface Geofence {
   id: string;
   name: string;
-  type: 'depot' | 'warehouse' | 'restricted' | 'customer' | 'service';
+  type: "depot" | "warehouse" | "restricted" | "customer" | "service";
   coordinates: [number, number][];
   radius?: number; // for circular geofences
   center?: [number, number]; // for circular geofences
@@ -82,10 +82,15 @@ export interface Geofence {
 export interface DrivingEvent {
   id: string;
   deviceId: string;
-  type: 'harsh_braking' | 'rapid_acceleration' | 'sharp_turn' | 'speeding' | 'idling';
+  type:
+    | "harsh_braking"
+    | "rapid_acceleration"
+    | "sharp_turn"
+    | "speeding"
+    | "idling";
   timestamp: string;
   location: [number, number];
-  severity: 'low' | 'medium' | 'high';
+  severity: "low" | "medium" | "high";
   details: {
     speed?: number;
     acceleration?: number;
@@ -135,7 +140,7 @@ export interface Driver {
   licenseNumber: string;
   licenseExpiry: string;
   employeeId: string;
-  status: 'active' | 'inactive' | 'on_leave' | 'suspended';
+  status: "active" | "inactive" | "on_leave" | "suspended";
   assignedVehicles: string[];
   currentVehicle?: string;
   rating: number;
@@ -154,18 +159,24 @@ export interface Message {
   content: string;
   timestamp: string;
   read: boolean;
-  priority: 'low' | 'normal' | 'high' | 'urgent';
-  type: 'text' | 'alert' | 'instruction';
+  priority: "low" | "normal" | "high" | "urgent";
+  type: "text" | "alert" | "instruction";
 }
 
 export interface Alert {
   id: string;
-  type: 'speeding' | 'harsh_braking' | 'geofence' | 'maintenance' | 'fuel_low' | 'engine_fault';
+  type:
+    | "speeding"
+    | "harsh_braking"
+    | "geofence"
+    | "maintenance"
+    | "fuel_low"
+    | "engine_fault";
   deviceId: string;
   vehicleName: string;
   driver: string;
   timestamp: string;
-  severity: 'low' | 'medium' | 'high';
+  severity: "low" | "medium" | "high";
   location?: [number, number];
   description: string;
   resolved: boolean;
@@ -228,8 +239,12 @@ export interface ViolationData {
   vehicleName: string;
   driver: string;
   date: string;
-  type: 'speeding' | 'harsh_braking' | 'rapid_acceleration' | 'geofence_violation';
-  severity: 'low' | 'medium' | 'high';
+  type:
+    | "speeding"
+    | "harsh_braking"
+    | "rapid_acceleration"
+    | "geofence_violation";
+  severity: "low" | "medium" | "high";
   location: [number, number];
   details: string;
   resolved: boolean;
@@ -239,7 +254,7 @@ export interface MaintenanceCostData {
   vehicleId: string;
   vehicleName: string;
   date: string;
-  type: 'scheduled' | 'repair' | 'inspection' | 'emergency';
+  type: "scheduled" | "repair" | "inspection" | "emergency";
   cost: number;
   description: string;
   servicedBy: string;
@@ -261,7 +276,14 @@ export interface DriverPerformanceData {
 export interface Report {
   id: string;
   name: string;
-  type: 'fuel_usage' | 'mileage' | 'idle_time' | 'violations' | 'maintenance_costs' | 'driver_performance' | 'custom';
+  type:
+    | "fuel_usage"
+    | "mileage"
+    | "idle_time"
+    | "violations"
+    | "maintenance_costs"
+    | "driver_performance"
+    | "custom";
   description: string;
   filters: ReportFilter;
   data: any[];
@@ -270,11 +292,11 @@ export interface Report {
   createdBy: string;
   lastGenerated: string;
   isScheduled: boolean;
-  scheduleFrequency?: 'daily' | 'weekly' | 'monthly';
+  scheduleFrequency?: "daily" | "weekly" | "monthly";
 }
 
 export interface ChartConfig {
-  type: 'bar' | 'line' | 'pie' | 'doughnut' | 'area' | 'scatter';
+  type: "bar" | "line" | "pie" | "doughnut" | "area" | "scatter";
   title: string;
   xAxis: {
     label: string;
@@ -292,8 +314,14 @@ export interface ReportTemplate {
   id: string;
   name: string;
   description: string;
-  type: 'fuel_usage' | 'mileage' | 'idle_time' | 'violations' | 'maintenance_costs' | 'driver_performance';
-  category: 'operational' | 'financial' | 'safety' | 'maintenance';
+  type:
+    | "fuel_usage"
+    | "mileage"
+    | "idle_time"
+    | "violations"
+    | "maintenance_costs"
+    | "driver_performance";
+  category: "operational" | "financial" | "safety" | "maintenance";
   defaultFilters: Partial<ReportFilter>;
   chartConfigs: ChartConfig[];
   icon: string;
@@ -312,7 +340,7 @@ export interface DashboardMetrics {
 }
 
 export interface ExportOptions {
-  format: 'pdf' | 'csv' | 'excel' | 'json';
+  format: "pdf" | "csv" | "excel" | "json";
   includeCharts: boolean;
   includeRawData: boolean;
   fileName?: string;

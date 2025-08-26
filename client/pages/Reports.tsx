@@ -5,12 +5,28 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Calendar } from "@/components/ui/calendar";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   BarChart,
   Bar,
@@ -26,9 +42,9 @@ import {
   LineChart,
   Line,
   AreaChart,
-  Area
+  Area,
 } from "recharts";
-import { 
+import {
   ArrowLeft,
   BarChart3,
   PieChart as PieChartIcon,
@@ -52,31 +68,34 @@ import {
   RefreshCw,
   Zap,
   Award,
-  TrendingDown
+  TrendingDown,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { format } from "date-fns";
-import type { 
-  Report, 
-  ReportTemplate, 
-  ReportFilter, 
+import type {
+  Report,
+  ReportTemplate,
+  ReportFilter,
   DashboardMetrics,
   FuelUsageData,
   ViolationData,
   IdleTimeData,
   DriverPerformanceData,
-  ExportOptions
+  ExportOptions,
 } from "@shared/fleet-types";
 
 export default function Reports() {
   const navigate = useNavigate();
-  const [selectedTemplate, setSelectedTemplate] = useState<ReportTemplate | null>(null);
+  const [selectedTemplate, setSelectedTemplate] =
+    useState<ReportTemplate | null>(null);
   const [showCustomBuilder, setShowCustomBuilder] = useState(false);
   const [dateRange, setDateRange] = useState<{ from: Date; to: Date }>({
     from: new Date(new Date().setDate(new Date().getDate() - 30)),
-    to: new Date()
+    to: new Date(),
   });
-  const [selectedFilters, setSelectedFilters] = useState<Partial<ReportFilter>>({});
+  const [selectedFilters, setSelectedFilters] = useState<Partial<ReportFilter>>(
+    {},
+  );
   const [activeTab, setActiveTab] = useState("overview");
 
   // Mock dashboard metrics
@@ -88,7 +107,7 @@ export default function Reports() {
     averageEfficiency: 87.5,
     maintenanceCosts: 18650,
     topPerformingDriver: "Akshay Kumar",
-    worstPerformingVehicle: "TRK-299"
+    worstPerformingVehicle: "TRK-299",
   };
 
   // Pre-built report templates
@@ -96,7 +115,8 @@ export default function Reports() {
     {
       id: "fuel-usage",
       name: "Fuel Usage Analysis",
-      description: "Comprehensive fuel consumption and cost analysis by vehicle and time period",
+      description:
+        "Comprehensive fuel consumption and cost analysis by vehicle and time period",
       type: "fuel_usage",
       category: "operational",
       defaultFilters: {},
@@ -105,16 +125,17 @@ export default function Reports() {
           type: "bar",
           title: "Fuel Consumption by Vehicle",
           xAxis: { label: "Vehicle", field: "vehicleName" },
-          yAxis: { label: "Fuel (L)", field: "fuelConsumed" }
-        }
+          yAxis: { label: "Fuel (L)", field: "fuelConsumed" },
+        },
       ],
       icon: "fuel",
-      color: "text-orange-600 bg-orange-50 border-orange-200"
+      color: "text-orange-600 bg-orange-50 border-orange-200",
     },
     {
       id: "mileage-report",
       name: "Mileage Report",
-      description: "Total distance covered, business vs personal usage breakdown",
+      description:
+        "Total distance covered, business vs personal usage breakdown",
       type: "mileage",
       category: "operational",
       defaultFilters: {},
@@ -123,11 +144,11 @@ export default function Reports() {
           type: "line",
           title: "Daily Mileage Trends",
           xAxis: { label: "Date", field: "date" },
-          yAxis: { label: "Distance (km)", field: "totalDistance" }
-        }
+          yAxis: { label: "Distance (km)", field: "totalDistance" },
+        },
       ],
       icon: "route",
-      color: "text-blue-600 bg-blue-50 border-blue-200"
+      color: "text-blue-600 bg-blue-50 border-blue-200",
     },
     {
       id: "idle-time",
@@ -141,16 +162,17 @@ export default function Reports() {
           type: "bar",
           title: "Idle Time by Vehicle",
           xAxis: { label: "Vehicle", field: "vehicleName" },
-          yAxis: { label: "Idle Time (hrs)", field: "totalIdleTime" }
-        }
+          yAxis: { label: "Idle Time (hrs)", field: "totalIdleTime" },
+        },
       ],
       icon: "clock",
-      color: "text-yellow-600 bg-yellow-50 border-yellow-200"
+      color: "text-yellow-600 bg-yellow-50 border-yellow-200",
     },
     {
       id: "violations",
       name: "Safety Violations",
-      description: "Speeding, harsh braking, and other driving violations tracking",
+      description:
+        "Speeding, harsh braking, and other driving violations tracking",
       type: "violations",
       category: "safety",
       defaultFilters: {},
@@ -159,11 +181,11 @@ export default function Reports() {
           type: "pie",
           title: "Violations by Type",
           xAxis: { label: "Type", field: "type" },
-          yAxis: { label: "Count", field: "count" }
-        }
+          yAxis: { label: "Count", field: "count" },
+        },
       ],
       icon: "alert",
-      color: "text-red-600 bg-red-50 border-red-200"
+      color: "text-red-600 bg-red-50 border-red-200",
     },
     {
       id: "maintenance-costs",
@@ -177,11 +199,11 @@ export default function Reports() {
           type: "area",
           title: "Monthly Maintenance Costs",
           xAxis: { label: "Month", field: "month" },
-          yAxis: { label: "Cost ($)", field: "cost" }
-        }
+          yAxis: { label: "Cost ($)", field: "cost" },
+        },
       ],
       icon: "wrench",
-      color: "text-purple-600 bg-purple-50 border-purple-200"
+      color: "text-purple-600 bg-purple-50 border-purple-200",
     },
     {
       id: "driver-performance",
@@ -195,12 +217,12 @@ export default function Reports() {
           type: "bar",
           title: "Driver Safety Scores",
           xAxis: { label: "Driver", field: "driverName" },
-          yAxis: { label: "Score", field: "safetyScore" }
-        }
+          yAxis: { label: "Score", field: "safetyScore" },
+        },
       ],
       icon: "star",
-      color: "text-green-600 bg-green-50 border-green-200"
-    }
+      color: "text-green-600 bg-green-50 border-green-200",
+    },
   ];
 
   // Mock chart data
@@ -209,14 +231,14 @@ export default function Reports() {
     { vehicleName: "VAN-203", fuelConsumed: 320, cost: 384, efficiency: 15.2 },
     { vehicleName: "TRK-515", fuelConsumed: 520, cost: 624, efficiency: 11.8 },
     { vehicleName: "VAN-187", fuelConsumed: 290, cost: 348, efficiency: 16.1 },
-    { vehicleName: "CAR-112", fuelConsumed: 180, cost: 216, efficiency: 18.3 }
+    { vehicleName: "CAR-112", fuelConsumed: 180, cost: 216, efficiency: 18.3 },
   ];
 
   const violationsData = [
     { type: "Speeding", count: 15, percentage: 53.6 },
     { type: "Harsh Braking", count: 8, percentage: 28.6 },
     { type: "Rapid Acceleration", count: 3, percentage: 10.7 },
-    { type: "Geofence Violation", count: 2, percentage: 7.1 }
+    { type: "Geofence Violation", count: 2, percentage: 7.1 },
   ];
 
   const idleTimeData = [
@@ -224,15 +246,40 @@ export default function Reports() {
     { vehicleName: "VAN-203", totalIdleTime: 32, fuelWasted: 8.9 },
     { vehicleName: "TRK-515", totalIdleTime: 68, fuelWasted: 18.7 },
     { vehicleName: "VAN-187", totalIdleTime: 28, fuelWasted: 7.2 },
-    { vehicleName: "CAR-112", totalIdleTime: 15, fuelWasted: 3.8 }
+    { vehicleName: "CAR-112", totalIdleTime: 15, fuelWasted: 3.8 },
   ];
 
   const driverPerformanceData = [
-    { driverName: "Akshay Kumar", safetyScore: 95, efficiency: 92, violations: 1 },
-    { driverName: "Sarah Wilson", safetyScore: 94, efficiency: 89, violations: 2 },
-    { driverName: "Mike Johnson", safetyScore: 88, efficiency: 78, violations: 8 },
-    { driverName: "Emma Davis", safetyScore: 93, efficiency: 91, violations: 1 },
-    { driverName: "David Brown", safetyScore: 85, efficiency: 82, violations: 5 }
+    {
+      driverName: "Akshay Kumar",
+      safetyScore: 95,
+      efficiency: 92,
+      violations: 1,
+    },
+    {
+      driverName: "Sarah Wilson",
+      safetyScore: 94,
+      efficiency: 89,
+      violations: 2,
+    },
+    {
+      driverName: "Mike Johnson",
+      safetyScore: 88,
+      efficiency: 78,
+      violations: 8,
+    },
+    {
+      driverName: "Emma Davis",
+      safetyScore: 93,
+      efficiency: 91,
+      violations: 1,
+    },
+    {
+      driverName: "David Brown",
+      safetyScore: 85,
+      efficiency: 82,
+      violations: 5,
+    },
   ];
 
   const maintenanceData = [
@@ -241,45 +288,52 @@ export default function Reports() {
     { month: "Mar", cost: 3200, vehicles: 4 },
     { month: "Apr", cost: 2100, vehicles: 2 },
     { month: "May", cost: 2800, vehicles: 3 },
-    { month: "Jun", cost: 3600, vehicles: 5 }
+    { month: "Jun", cost: 3600, vehicles: 5 },
   ];
 
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#8884d8'];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
   const getTemplateIcon = (iconName: string) => {
     switch (iconName) {
-      case "fuel": return <Fuel className="h-6 w-6" />;
-      case "route": return <Route className="h-6 w-6" />;
-      case "clock": return <Clock className="h-6 w-6" />;
-      case "alert": return <AlertTriangle className="h-6 w-6" />;
-      case "wrench": return <Wrench className="h-6 w-6" />;
-      case "star": return <Star className="h-6 w-6" />;
-      default: return <BarChart3 className="h-6 w-6" />;
+      case "fuel":
+        return <Fuel className="h-6 w-6" />;
+      case "route":
+        return <Route className="h-6 w-6" />;
+      case "clock":
+        return <Clock className="h-6 w-6" />;
+      case "alert":
+        return <AlertTriangle className="h-6 w-6" />;
+      case "wrench":
+        return <Wrench className="h-6 w-6" />;
+      case "star":
+        return <Star className="h-6 w-6" />;
+      default:
+        return <BarChart3 className="h-6 w-6" />;
     }
   };
 
-  const handleExport = (format: ExportOptions['format']) => {
+  const handleExport = (format: ExportOptions["format"]) => {
     // Mock export functionality
-    const fileName = `fleet_report_${format}_${format('yyyy-MM-dd', new Date())}`;
+    const fileName = `fleet_report_${format}_${format("yyyy-MM-dd", new Date())}`;
     console.log(`Exporting report as ${format}: ${fileName}`);
-    
+
     // In a real app, this would trigger the actual export
-    const link = document.createElement('a');
-    link.href = '#';
+    const link = document.createElement("a");
+    link.href = "#";
     link.download = fileName;
     link.click();
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('en-IN', {
-      style: 'currency',
-      currency: 'INR',
-      minimumFractionDigits: 0
+    return new Intl.NumberFormat("en-IN", {
+      style: "currency",
+      currency: "INR",
+      minimumFractionDigits: 0,
     }).format(amount);
   };
 
   const formatNumber = (num: number) => {
-    return new Intl.NumberFormat('en-IN').format(num);
+    return new Intl.NumberFormat("en-IN").format(num);
   };
 
   return (
@@ -289,10 +343,10 @@ export default function Reports() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-3">
-              <Button 
-                variant="ghost" 
-                size="sm" 
-                onClick={() => navigate('/')}
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
                 className="gap-2"
               >
                 <ArrowLeft className="h-4 w-4" />
@@ -304,15 +358,19 @@ export default function Reports() {
                   <BarChart3 className="h-6 w-6 text-primary-foreground" />
                 </div>
                 <div>
-                  <h1 className="text-xl font-bold text-foreground">Reports & Analytics</h1>
-                  <p className="text-sm text-muted-foreground">Business Intelligence Dashboard</p>
+                  <h1 className="text-xl font-bold text-foreground">
+                    Reports & Analytics
+                  </h1>
+                  <p className="text-sm text-muted-foreground">
+                    Business Intelligence Dashboard
+                  </p>
                 </div>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <div className="flex gap-2">
-                <Button 
-                  onClick={() => navigate('/vehicles')}
+                <Button
+                  onClick={() => navigate("/vehicles")}
                   variant="outline"
                   size="sm"
                   className="gap-2"
@@ -320,8 +378,8 @@ export default function Reports() {
                   <Users className="h-4 w-4" />
                   Vehicles
                 </Button>
-                <Button 
-                  onClick={() => navigate('/live-map')}
+                <Button
+                  onClick={() => navigate("/live-map")}
                   variant="outline"
                   size="sm"
                   className="gap-2"
@@ -336,7 +394,9 @@ export default function Reports() {
               </Badge>
               <div className="text-right">
                 <p className="text-sm font-medium">Fleet Manager</p>
-                <p className="text-xs text-muted-foreground">Data Updated: Live</p>
+                <p className="text-xs text-muted-foreground">
+                  Data Updated: Live
+                </p>
               </div>
             </div>
           </div>
@@ -344,7 +404,11 @@ export default function Reports() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
+        <Tabs
+          value={activeTab}
+          onValueChange={setActiveTab}
+          className="space-y-6"
+        >
           <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="overview" className="gap-2">
               <TrendingUp className="h-4 w-4" />
@@ -372,15 +436,21 @@ export default function Reports() {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-blue-700">Total Distance</p>
-                      <p className="text-2xl font-bold text-blue-900">{formatNumber(dashboardMetrics.totalDistance)} km</p>
+                      <p className="text-sm font-medium text-blue-700">
+                        Total Distance
+                      </p>
+                      <p className="text-2xl font-bold text-blue-900">
+                        {formatNumber(dashboardMetrics.totalDistance)} km
+                      </p>
                     </div>
                     <Route className="h-8 w-8 text-blue-600" />
                   </div>
                   <div className="mt-2">
                     <div className="flex items-center gap-1">
                       <TrendingUp className="h-3 w-3 text-green-600" />
-                      <span className="text-xs text-green-600">+5.2% vs last month</span>
+                      <span className="text-xs text-green-600">
+                        +5.2% vs last month
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -390,15 +460,21 @@ export default function Reports() {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-orange-700">Fuel Costs</p>
-                      <p className="text-2xl font-bold text-orange-900">{formatCurrency(dashboardMetrics.totalFuelCost)}</p>
+                      <p className="text-sm font-medium text-orange-700">
+                        Fuel Costs
+                      </p>
+                      <p className="text-2xl font-bold text-orange-900">
+                        {formatCurrency(dashboardMetrics.totalFuelCost)}
+                      </p>
                     </div>
                     <Fuel className="h-8 w-8 text-orange-600" />
                   </div>
                   <div className="mt-2">
                     <div className="flex items-center gap-1">
                       <TrendingDown className="h-3 w-3 text-green-600" />
-                      <span className="text-xs text-green-600">-2.1% vs last month</span>
+                      <span className="text-xs text-green-600">
+                        -2.1% vs last month
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -408,15 +484,21 @@ export default function Reports() {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-red-700">Safety Violations</p>
-                      <p className="text-2xl font-bold text-red-900">{dashboardMetrics.totalViolations}</p>
+                      <p className="text-sm font-medium text-red-700">
+                        Safety Violations
+                      </p>
+                      <p className="text-2xl font-bold text-red-900">
+                        {dashboardMetrics.totalViolations}
+                      </p>
                     </div>
                     <AlertTriangle className="h-8 w-8 text-red-600" />
                   </div>
                   <div className="mt-2">
                     <div className="flex items-center gap-1">
                       <TrendingDown className="h-3 w-3 text-green-600" />
-                      <span className="text-xs text-green-600">-15% vs last month</span>
+                      <span className="text-xs text-green-600">
+                        -15% vs last month
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -426,15 +508,21 @@ export default function Reports() {
                 <CardContent className="p-4">
                   <div className="flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-green-700">Fleet Efficiency</p>
-                      <p className="text-2xl font-bold text-green-900">{dashboardMetrics.averageEfficiency}%</p>
+                      <p className="text-sm font-medium text-green-700">
+                        Fleet Efficiency
+                      </p>
+                      <p className="text-2xl font-bold text-green-900">
+                        {dashboardMetrics.averageEfficiency}%
+                      </p>
                     </div>
                     <Zap className="h-8 w-8 text-green-600" />
                   </div>
                   <div className="mt-2">
                     <div className="flex items-center gap-1">
                       <TrendingUp className="h-3 w-3 text-green-600" />
-                      <span className="text-xs text-green-600">+3.1% vs last month</span>
+                      <span className="text-xs text-green-600">
+                        +3.1% vs last month
+                      </span>
                     </div>
                   </div>
                 </CardContent>
@@ -480,13 +568,18 @@ export default function Reports() {
                         cx="50%"
                         cy="50%"
                         labelLine={false}
-                        label={({ type, percentage }) => `${type}: ${percentage}%`}
+                        label={({ type, percentage }) =>
+                          `${type}: ${percentage}%`
+                        }
                         outerRadius={80}
                         fill="#8884d8"
                         dataKey="count"
                       >
                         {violationsData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                          <Cell
+                            key={`cell-${index}`}
+                            fill={COLORS[index % COLORS.length]}
+                          />
                         ))}
                       </Pie>
                       <Tooltip />
@@ -531,7 +624,13 @@ export default function Reports() {
                       <XAxis dataKey="month" />
                       <YAxis />
                       <Tooltip />
-                      <Area type="monotone" dataKey="cost" stroke="#8b5cf6" fill="#8b5cf6" fillOpacity={0.3} />
+                      <Area
+                        type="monotone"
+                        dataKey="cost"
+                        stroke="#8b5cf6"
+                        fill="#8b5cf6"
+                        fillOpacity={0.3}
+                      />
                     </AreaChart>
                   </ResponsiveContainer>
                 </CardContent>
@@ -543,8 +642,8 @@ export default function Reports() {
           <TabsContent value="templates" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {reportTemplates.map((template) => (
-                <Card 
-                  key={template.id} 
+                <Card
+                  key={template.id}
                   className="hover:shadow-lg transition-shadow cursor-pointer"
                   onClick={() => setSelectedTemplate(template)}
                 >
@@ -566,7 +665,11 @@ export default function Reports() {
                     <div className="space-y-3">
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">
                         <BarChart3 className="h-4 w-4" />
-                        <span>{template.chartConfigs.length} chart{template.chartConfigs.length !== 1 ? 's' : ''} included</span>
+                        <span>
+                          {template.chartConfigs.length} chart
+                          {template.chartConfigs.length !== 1 ? "s" : ""}{" "}
+                          included
+                        </span>
                       </div>
                       <Button className="w-full gap-2">
                         <FileText className="h-4 w-4" />
@@ -593,41 +696,63 @@ export default function Reports() {
                   <div className="space-y-4">
                     <div>
                       <Label htmlFor="report-name">Report Name</Label>
-                      <Input id="report-name" placeholder="Enter report name..." />
+                      <Input
+                        id="report-name"
+                        placeholder="Enter report name..."
+                      />
                     </div>
-                    
+
                     <div>
                       <Label>Date Range</Label>
                       <div className="flex gap-2 mt-2">
                         <Popover>
                           <PopoverTrigger asChild>
-                            <Button variant="outline" className="justify-start gap-2">
+                            <Button
+                              variant="outline"
+                              className="justify-start gap-2"
+                            >
                               <CalendarIcon className="h-4 w-4" />
-                              {dateRange.from ? format(dateRange.from, "PPP") : "Start date"}
+                              {dateRange.from
+                                ? format(dateRange.from, "PPP")
+                                : "Start date"}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0">
                             <Calendar
                               mode="single"
                               selected={dateRange.from}
-                              onSelect={(date) => date && setDateRange(prev => ({ ...prev, from: date }))}
+                              onSelect={(date) =>
+                                date &&
+                                setDateRange((prev) => ({
+                                  ...prev,
+                                  from: date,
+                                }))
+                              }
                               initialFocus
                             />
                           </PopoverContent>
                         </Popover>
-                        
+
                         <Popover>
                           <PopoverTrigger asChild>
-                            <Button variant="outline" className="justify-start gap-2">
+                            <Button
+                              variant="outline"
+                              className="justify-start gap-2"
+                            >
                               <CalendarIcon className="h-4 w-4" />
-                              {dateRange.to ? format(dateRange.to, "PPP") : "End date"}
+                              {dateRange.to
+                                ? format(dateRange.to, "PPP")
+                                : "End date"}
                             </Button>
                           </PopoverTrigger>
                           <PopoverContent className="w-auto p-0">
                             <Calendar
                               mode="single"
                               selected={dateRange.to}
-                              onSelect={(date) => date && setDateRange(prev => ({ ...prev, to: date }))}
+                              onSelect={(date) =>
+                                date &&
+                                setDateRange((prev) => ({ ...prev, to: date }))
+                              }
                               initialFocus
                             />
                           </PopoverContent>
@@ -643,11 +768,21 @@ export default function Reports() {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="fuel_usage">Fuel Usage</SelectItem>
-                          <SelectItem value="mileage">Mileage Report</SelectItem>
-                          <SelectItem value="idle_time">Idle Time Analysis</SelectItem>
-                          <SelectItem value="violations">Safety Violations</SelectItem>
-                          <SelectItem value="maintenance">Maintenance Costs</SelectItem>
-                          <SelectItem value="driver_performance">Driver Performance</SelectItem>
+                          <SelectItem value="mileage">
+                            Mileage Report
+                          </SelectItem>
+                          <SelectItem value="idle_time">
+                            Idle Time Analysis
+                          </SelectItem>
+                          <SelectItem value="violations">
+                            Safety Violations
+                          </SelectItem>
+                          <SelectItem value="maintenance">
+                            Maintenance Costs
+                          </SelectItem>
+                          <SelectItem value="driver_performance">
+                            Driver Performance
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -657,10 +792,22 @@ export default function Reports() {
                     <div>
                       <Label>Filter by Vehicles</Label>
                       <div className="mt-2 space-y-2 max-h-32 overflow-y-auto">
-                        {["TRK-401", "VAN-203", "TRK-515", "VAN-187", "CAR-112"].map((vehicle) => (
-                          <div key={vehicle} className="flex items-center space-x-2">
+                        {[
+                          "TRK-401",
+                          "VAN-203",
+                          "TRK-515",
+                          "VAN-187",
+                          "CAR-112",
+                        ].map((vehicle) => (
+                          <div
+                            key={vehicle}
+                            className="flex items-center space-x-2"
+                          >
                             <Checkbox id={`vehicle-${vehicle}`} />
-                            <Label htmlFor={`vehicle-${vehicle}`} className="text-sm">
+                            <Label
+                              htmlFor={`vehicle-${vehicle}`}
+                              className="text-sm"
+                            >
                               {vehicle}
                             </Label>
                           </div>
@@ -702,7 +849,10 @@ export default function Reports() {
           {/* Export Center Tab */}
           <TabsContent value="exports" className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleExport('pdf')}>
+              <Card
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => handleExport("pdf")}
+              >
                 <CardContent className="p-6 text-center">
                   <FileText className="h-12 w-12 mx-auto mb-4 text-red-500" />
                   <h3 className="font-semibold mb-2">Export to PDF</h3>
@@ -716,7 +866,10 @@ export default function Reports() {
                 </CardContent>
               </Card>
 
-              <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleExport('csv')}>
+              <Card
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => handleExport("csv")}
+              >
                 <CardContent className="p-6 text-center">
                   <FileText className="h-12 w-12 mx-auto mb-4 text-green-500" />
                   <h3 className="font-semibold mb-2">Export to CSV</h3>
@@ -730,7 +883,10 @@ export default function Reports() {
                 </CardContent>
               </Card>
 
-              <Card className="cursor-pointer hover:shadow-lg transition-shadow" onClick={() => handleExport('excel')}>
+              <Card
+                className="cursor-pointer hover:shadow-lg transition-shadow"
+                onClick={() => handleExport("excel")}
+              >
                 <CardContent className="p-6 text-center">
                   <FileText className="h-12 w-12 mx-auto mb-4 text-blue-500" />
                   <h3 className="font-semibold mb-2">Export to Excel</h3>
@@ -766,12 +922,35 @@ export default function Reports() {
               <CardContent>
                 <div className="space-y-3">
                   {[
-                    { name: "Monthly Fuel Report - June 2025", date: "2025-06-30", format: "PDF", size: "2.3 MB" },
-                    { name: "Driver Performance Analysis", date: "2025-06-28", format: "Excel", size: "1.8 MB" },
-                    { name: "Safety Violations Report", date: "2025-06-25", format: "CSV", size: "156 KB" },
-                    { name: "Fleet Efficiency Report", date: "2025-06-22", format: "PDF", size: "3.1 MB" }
+                    {
+                      name: "Monthly Fuel Report - June 2025",
+                      date: "2025-06-30",
+                      format: "PDF",
+                      size: "2.3 MB",
+                    },
+                    {
+                      name: "Driver Performance Analysis",
+                      date: "2025-06-28",
+                      format: "Excel",
+                      size: "1.8 MB",
+                    },
+                    {
+                      name: "Safety Violations Report",
+                      date: "2025-06-25",
+                      format: "CSV",
+                      size: "156 KB",
+                    },
+                    {
+                      name: "Fleet Efficiency Report",
+                      date: "2025-06-22",
+                      format: "PDF",
+                      size: "3.1 MB",
+                    },
                   ].map((export_, index) => (
-                    <div key={index} className="flex items-center justify-between p-3 border rounded-lg">
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-3 border rounded-lg"
+                    >
                       <div className="flex items-center gap-3">
                         <FileText className="h-5 w-5 text-muted-foreground" />
                         <div>
