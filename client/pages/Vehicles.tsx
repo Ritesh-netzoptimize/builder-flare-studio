@@ -474,7 +474,7 @@ export default function Vehicles() {
       case "van": return <Car className="h-5 w-5" />;
       case "car": return <Car className="h-5 w-5" />;
       case "bus": return <Bus className="h-5 w-5" />;
-      case "motorcycle": return <Motorcycle className="h-5 w-5" />;
+      case "motorcycle": return <Bike className="h-5 w-5" />;
       default: return <Truck className="h-5 w-5" />;
     }
   };
