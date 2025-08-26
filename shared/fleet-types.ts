@@ -19,16 +19,55 @@ export interface VehicleStatus {
   engineHours?: number;
 }
 
+export interface VehicleSpecs {
+  make: string;
+  model: string;
+  year: number;
+  licensePlate: string;
+  vin: string;
+  color: string;
+  fuelType: 'gasoline' | 'diesel' | 'electric' | 'hybrid';
+  capacity: {
+    passengers?: number;
+    cargo?: number; // in cubic meters
+    weight?: number; // in tons
+  };
+}
+
+export interface MaintenanceRecord {
+  id: string;
+  type: 'scheduled' | 'repair' | 'inspection' | 'emergency';
+  description: string;
+  date: string;
+  nextDue?: string;
+  cost?: number;
+  mileage: number;
+  status: 'completed' | 'pending' | 'overdue';
+  servicedBy?: string;
+}
+
 export interface Vehicle {
   id: string;
   deviceId: string;
   name: string;
-  type: 'truck' | 'van' | 'car' | 'bus';
+  type: 'truck' | 'van' | 'car' | 'bus' | 'motorcycle' | 'trailer';
+  specs: VehicleSpecs;
   driver: string;
+  assignedDriverId?: string;
   location: VehicleLocation;
   status: VehicleStatus;
   efficiency: number;
   score: number;
+  odometer: number;
+  maintenanceRecords: MaintenanceRecord[];
+  lastMaintenance?: string;
+  nextMaintenance?: string;
+  insuranceExpiry: string;
+  registrationExpiry: string;
+  fuelCapacity: number;
+  purchaseDate: string;
+  warrantyExpiry?: string;
+  notes?: string;
 }
 
 export interface Geofence {
