@@ -286,6 +286,15 @@ export default function LiveMap() {
             </div>
             <div className="flex items-center gap-4">
               <Button
+                onClick={() => navigate('/vehicles')}
+                variant="outline"
+                size="sm"
+                className="gap-2"
+              >
+                <Truck className="h-4 w-4" />
+                Vehicles
+              </Button>
+              <Button
                 variant={showGeofences ? "default" : "outline"}
                 size="sm"
                 onClick={() => setShowGeofences(!showGeofences)}
