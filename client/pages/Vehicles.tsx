@@ -34,7 +34,8 @@ import {
   MoreHorizontal,
   Car,
   Bus,
-  Bike
+  Bike,
+  BarChart3
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import type { Vehicle, Driver, Message, VehicleFilter, MaintenanceRecord } from "@shared/fleet-types";
