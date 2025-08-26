@@ -57,6 +57,12 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        fleet: {
+          success: "hsl(var(--fleet-success))",
+          warning: "hsl(var(--fleet-warning))",
+          danger: "hsl(var(--fleet-danger))",
+          info: "hsl(var(--fleet-info))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
