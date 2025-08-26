@@ -193,6 +193,7 @@ export default function Index() {
       case "geofence": return <MapPin className="h-4 w-4" />;
       case "maintenance": return <Wrench className="h-4 w-4" />;
       case "fuel_low": return <Fuel className="h-4 w-4" />;
+      case "engine_fault": return <AlertCircle className="h-4 w-4" />;
       default: return <AlertCircle className="h-4 w-4" />;
     }
   };
@@ -204,6 +205,19 @@ export default function Index() {
       case "low": return "bg-fleet-info text-white";
       default: return "bg-muted text-muted-foreground";
     }
+  };
+
+  const formatTimeAgo = (timestamp: string) => {
+    const now = new Date();
+    const alertTime = new Date(timestamp);
+    const diffInMinutes = Math.floor((now.getTime() - alertTime.getTime()) / (1000 * 60));
+
+    if (diffInMinutes < 1) return "Just now";
+    if (diffInMinutes < 60) return `${diffInMinutes} min ago`;
+    const diffInHours = Math.floor(diffInMinutes / 60);
+    if (diffInHours < 24) return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+    const diffInDays = Math.floor(diffInHours / 24);
+    return `${diffInDays} day${diffInDays > 1 ? 's' : ''} ago`;
   };
 
   return (
