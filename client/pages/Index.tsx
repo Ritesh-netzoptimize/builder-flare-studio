@@ -236,6 +236,14 @@ export default function Index() {
               </div>
             </div>
             <div className="flex items-center gap-4">
+              <Button
+                onClick={() => navigate('/live-map')}
+                className="gap-2"
+                variant="outline"
+              >
+                <Map className="h-4 w-4" />
+                Live Map
+              </Button>
               <Badge variant="outline" className="gap-1">
                 <Activity className="h-3 w-3" />
                 Live Tracking Active
